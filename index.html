@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumos Academy — demo showcase</title>
+<style>
+  :root { --ink:#232038; --brand:#3b2fb8; --cream:#fffdf6; --sun:#fde68a; --line:#e7e2d0; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.55; }
+  .banner { background: var(--sun); text-align:center; padding:.55rem 1rem; font-size:.95rem; border-bottom: 2px solid #b45309; }
+  main { max-width: 62rem; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+  h1 { font-size: 2.6rem; margin: .4rem 0 .2rem; }
+  h2 { font-size: 1.6rem; margin: 2.4rem 0 .4rem; }
+  .lede { font-size: 1.2rem; max-width: 44rem; }
+  .note { background:#fff; border:2px solid var(--line); border-radius: 1rem; padding: 1rem 1.25rem; }
+  figure { margin: 1rem 0 0; }
+  figure img { width: 100%; height: auto; border: 2px solid var(--line); border-radius: 1rem; display:block; }
+  figcaption { margin-top: .5rem; font-size: 1.02rem; }
+  .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: .8rem; margin-top: 1rem; }
+  .game { background:#fff; border:2px solid var(--line); border-radius: 1rem; padding: .9rem 1.1rem; }
+  .game b { font-size: 1.08rem; }
+  .game .band { color: var(--brand); font-weight: 600; font-size: .9rem; }
+  .game p { margin: .3rem 0 0; }
+  .principles { display:grid; grid-template-columns: repeat(auto-fill, minmax(17rem,1fr)); gap:.8rem; margin-top:1rem; }
+  .principles div { background:#fff; border:2px solid var(--line); border-radius:1rem; padding:.9rem 1.1rem; }
+  footer { margin-top: 3rem; font-size: .95rem; color:#555; border-top: 2px solid var(--line); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="banner"><strong>Demo showcase</strong> — screenshots of the working app, with fictional data. Nothing here collects information.</div>
+<main>
+  <h1>🌟 Lumos Academy</h1>
+  <p class="lede">Math games that <strong>teach</strong>, built for BC elementary classrooms (K–3 first). Ten games, one calm library for kids, real evidence for teachers, plain language for parents.</p>
+  <p class="note">This page is a <strong>tour</strong>, not the app itself: Lumos is a server application (logins, a database, saved progress), so it can't live on a static page. A hosted demo arrives with the pilot. Everything pictured below is the real, working build — with invented children, because that's how demos should work.</p>
+
+  <h2>The ten games</h2>
+  <div class="games">
+    <div class="game"><b>🔟 Ten-Frame Workshop</b> <span class="band">K–3</span><p>Seeing how many without counting, one by one — the foundation of number sense.</p></div>
+    <div class="game"><b>🛤️ Number Path</b> <span class="band">K–3</span><p>Counting on and back along a path; estimation for the older grades.</p></div>
+    <div class="game"><b>🌉 Bridge Builder</b> <span class="band">K–3</span><p>Making ten to cross the bridge — the strategy is named out loud, every time.</p></div>
+    <div class="game"><b>🧱 Build-a-Number</b> <span class="band">K–3</span><p>Tens and ones, built by hand — including the "wrong-looking" builds that are actually right.</p></div>
+    <div class="game"><b>🔁 Pattern Parade</b> <span class="band">K–3</span><p>Find the core of a repeating pattern, then build your own.</p></div>
+    <div class="game"><b>⚖️ Balance Scale</b> <span class="band">K–3</span><p>Equality you can see tip. Same value — not the same number of tiles. Grade 3: unknowns.</p></div>
+    <div class="game"><b>🔷 Shape Workshop</b> <span class="band">K–3</span><p>Sort, build, slide, flip, turn — and watch a net fold into a solid.</p></div>
+    <div class="game"><b>🦘 Open Line Jumps</b> <span class="band">Gr 2–3</span><p>Your jumps are your strategy on an open number line, to 100 and 1,000.</p></div>
+    <div class="game"><b>🗺️ Hundred Chart Trek</b> <span class="band">Gr 2–3</span><p>Clue-by-clue treks across the hundred chart: one row down is +10, and here's why.</p></div>
+    <div class="game"><b>📏 Measure the Room</b> <span class="band">K–3</span><p>Units end to end, no gaps — then real centimetres and a broken ruler.</p></div>
+  </div>
+
+  <h2>A look inside</h2>
+
+  <figure>
+    <img src="01-demo-doors.png" alt="The demo entry page with four doors: District Admin, Teacher, Parent, and Child">
+    <figcaption><strong>Four doors in.</strong> A district admin, teachers, a parent, and a child each get their own view — the demo opens any of them with one tap.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="04-child-library.png" alt="A child's game library: big friendly buttons grouped by topic, a progress map, and an I'm done button">
+    <figcaption><strong>The child's library.</strong> Big buttons, read-aloud everywhere, no scores, no rankings, nothing to buy. The map at the bottom is the child's own journey — and "I'm done" wipes the shared iPad clean for the next child.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="05-game-balance.png" alt="Balance Scale mid-lesson: the demonstrator shows a tilted scale with tiles of 2 and 1 making 3">
+    <figcaption><strong>Teaching before testing.</strong> Every game opens with a short "watch me" demonstration. Balance Scale's first lesson is the big idea itself: <em>same value, not the same number of tiles.</em> A keyboard "Buttons view" plays every game identically — no dragging required, ever.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="03-teacher-classroom.png" alt="Teacher classroom page: class goal, start-a-session controls, and toggles for which games the class can see">
+    <figcaption><strong>The teacher's classroom.</strong> Launch a session in two taps, pick today's game, and choose which games this class can see — each classroom is different, so the library is too.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="07-teacher-recent-work.png" alt="Teacher evidence view: BC proficiency bands set by the teacher, with evidence, learning time, and common misconceptions">
+    <figcaption><strong>Evidence, not auto-scores.</strong> Proficiency bands are the <em>teacher's judgment</em>, set from the evidence underneath — strategies used, help needed, the misconception that keeps showing up. "Insufficient evidence" is an honest answer the app is happy to give.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="06-parent.png" alt="Parent view: plain-language progress for their child, with recent sessions listed">
+    <figcaption><strong>Parents see plain language.</strong> Their own children only: what's being worked on, what the teacher has judged, and what was played — no jargon, no surprises.</figcaption>
+  </figure>
+
+  <h2>Built the way BC schools need it</h2>
+  <div class="principles">
+    <div><strong>BC curriculum only</strong> — Big Ideas and the BC proficiency scale (Emerging · Developing · Proficient · Extending).</div>
+    <div><strong>Nothing to sell a child</strong> — no ads, no trackers, no leaderboards, no in-app purchases. Ever.</div>
+    <div><strong>Kid-safe sign-in</strong> — class code, tap your name, pick your secret picture. No passwords or emails for children.</div>
+    <div><strong>Every device</strong> — school iPads, a desktop browser, or a phone at home. Families aren't assumed to have any one of them.</div>
+    <div><strong>Accessible by default</strong> — read-aloud, captions, keyboard play, easier-to-read font. WCAG 2.2 AA is the bar.</div>
+    <div><strong>Privacy first</strong> — Canadian hosting at launch, the least data possible, and a privacy impact assessment pack for districts.</div>
+  </div>
+
+  <footer>
+    <p>Lumos Academy is a working name. Screenshots from the demo build, October 2026 — all people, schools, and data pictured are fictional.</p>
+  </footer>
+</main>
+</body>
+</html>
