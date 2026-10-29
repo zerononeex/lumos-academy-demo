@@ -3,7 +3,7 @@
 // Game play needs a connection in v1.
 // Precache only what this worker actually serves from cache: the offline page (navigation fallback) and
 // the icon (cache-first below). "/" and the manifest used to be precached but were never served from cache.
-const CACHE = "lumos-shell-v2";
+const CACHE = "lumos-shell-v3";
 const PRECACHE = ["/offline.html", "/icons/icon.svg"];
 
 self.addEventListener("install", (e) => e.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE))));
