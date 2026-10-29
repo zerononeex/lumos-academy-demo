@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Balance Scale</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* The scale: the beam swings toward the side with more value (the tilt is the feedback) with a short spring, and glows
+     when level; held still until Check when the child predicts. Tiles are sized by value as well as numbered; a balloon
+     lifts its side (take away). The child's pan has a sun-coloured tray; the tray of tiles to tap sits right under it. */
+  svg.scale { width: min(100%, 640px); max-height: max(calc(100cqh - 11.5rem), 170px); }
+  .beam, .pan { transition: transform .8s cubic-bezier(.34, 1.45, .64, 1); }
+  .beam rect { fill: #7a4a16; } .post { fill: #c9a26b; stroke: var(--ink); stroke-width: 3; }
+  .level .beam rect { fill: var(--leaf); } .level .post { fill: var(--leaf-soft); }
+  .pan line { stroke: var(--ink); stroke-width: 2.5; } .tray { fill: #555; } .pan.mine .tray { fill: var(--sun); stroke: var(--ink); stroke-width: 2; }
+  .pan.pulse .tray { fill: var(--gold); animation: pulse 1s ease-in-out infinite alternate; }
+  .tile rect { fill: #9bc4f0; stroke: var(--ink); stroke-width: 2.5; rx: 6px; } .tile.weight rect { fill: #f2c46d; }
+  .tile.drop { animation: drop .35s cubic-bezier(.34, 1.4, .64, 1); }
+  @keyframes drop { from { transform: translateY(-60px); opacity: 0; } }
+  .tile text, .balloon text { font-size: 22px; font-weight: 800; fill: var(--ink); } .total { font-size: 28px; font-weight: 800; fill: var(--ink); }
+  .tile.box rect { fill: #fff; stroke: var(--brand); stroke-width: 4; stroke-dasharray: 8 5; } .tile.box text { fill: var(--brand); }
+  .balloon circle { fill: #ffd2e6; stroke: #a0305f; stroke-width: 3; } .balloon line { stroke: #a0305f; stroke-width: 2; }
+  .balloon.box circle { fill: #fff; stroke: var(--brand); stroke-dasharray: 8 5; }
+  .prop { fill: #c9a26b; stroke: var(--ink); stroke-width: 2; }
+  .scaletext { margin: 0; font-size: 1rem; }
+  .eq { margin: 0; font-size: 1.8rem; font-weight: 800; text-align: center; flex-basis: 100%; }
+  .eq .equals { color: var(--calm); padding: 0 .3em; } .eq small { display: block; font-size: 1rem; color: var(--calm); }
+  .loads { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; flex-basis: 100%; }
+  /* The tray: each tile value is a big tile to tap (one more on the pan), its count, and a small − to take one off. */
+  .tiletray .stepper { position: relative; display: grid; grid-template: "more" auto "less" auto / auto; justify-items: center; gap: .35rem; }
+  .tiletray .steplabel { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .tiletray .more { grid-area: more; padding: 0; width: auto; min-width: 0; background: none; box-shadow: none; }
+  .tiletray .more:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
+  .tiletray .stepval { position: absolute; top: -10px; right: -10px; min-width: 2.2em; padding: 0 .3em; border-radius: 999px; background: var(--card);
+    border: 2px solid var(--ink); font-size: 1rem; line-height: 1.6; } .tiletray .stepval::before { content: "×"; }
+  .tiletray .stepper button.secondary { grid-area: less; min-height: 44px; min-width: 44px; width: 44px; font-size: 1.4rem; }
+  .traytile { display: grid; place-items: center; width: 64px; height: 64px; border: 3px solid var(--ink); border-radius: 10px; background: #9bc4f0; color: var(--ink);
+    font-size: 1.6rem; font-weight: 800; box-shadow: 0 5px 0 color-mix(in srgb, var(--ink) 45%, transparent); }
+  .traytile.v2 { width: 70px; } .traytile.v5 { width: 78px; } .traytile.v10 { width: 88px; }
+  @media (max-width: 640px) { .eq { font-size: 1.4rem; } .loads { gap: .4rem; } .traytile { width: 58px !important; height: 58px; } }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt and replay, the scale and its tray (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

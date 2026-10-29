@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Open Line Jumps</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* The kit's jump line as an open number line: no banks, river or ticks; landmark ticks only on that stage. The
+     child's jumps are written below (the buttons twin), or are the whole board when the stage asks for sentences. */
+  .holder { flex-basis: 100%; display: flex; justify-content: center; }
+  svg.jline { max-height: max(34cqh, 90px); }
+  .jline .tick, .jline .bank, .jline .river, .jline .far, .jtext { display: none !important; }
+  .jline .mark { stroke: var(--ink); stroke-width: 3; } .landings text { font-size: 22px; fill: var(--brand); }
+  .card { margin: 0; font-size: 1.6rem; font-weight: 700; flex-basis: 100%; text-align: center; }
+  .starts { display: flex; gap: .5rem; } .starts button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+  .planker { display: flex; flex-flow: row wrap; justify-content: center; align-items: center; gap: .4rem; max-width: 40rem; } .jumpbtns { flex-basis: 100%; display: flex; gap: .5rem; justify-content: center; }
+  .record { margin: 0; padding-left: 1.6rem; font-size: 1.3rem; }
+  @media (max-width: 640px) { .card { font-size: 1.3rem; } .record { font-size: 1.1rem; } }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

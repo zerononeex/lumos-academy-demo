@@ -13,7 +13,7 @@ self.addEventListener("activate", (e) =>
 self.addEventListener("fetch", (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== "GET" || url.origin !== location.origin) return;
-  if (url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/games/") || url.pathname.startsWith("/icons/")) {
+  if (url.pathname.startsWith("/_next/static/") || url.pathname.startsWith("/games/") || url.pathname.startsWith("/icons/") || url.pathname.startsWith("/worlds/")) {
     // Immutable, non-personal assets: cache-first.
     e.respondWith(caches.match(e.request).then((hit) => hit || fetch(e.request).then((res) => {
       const copy = res.clone();
