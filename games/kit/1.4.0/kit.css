@@ -1,0 +1,290 @@
+/* Lumos game kit 1.4.0 stylesheet: 1.3.0's (the layouts and the game-feel layer) plus, at the end, section 11: the Lumos
+   look (DESIGN.md v2): the night-sky frame, a white board, Andika for reading and Fredoka for big words, both bundled
+   here (fonts/, SIL Open Font License) because a sandboxed game cannot load the shell's fonts. Loaded with kit/1.3.0/kit.js. */
+:root { --ink:#1b1f3b; --paper:#fffdf7; --brand:#3a2fa8; --calm:#0f6b5c; --warn:#8a3b00; --soft:#e9e6ff; --gold:#b8860b; }
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { display: flex; flex-direction: column; gap: .4rem; padding: .6rem; font: 1.3rem/1.35 system-ui, sans-serif; color: var(--ink); background: var(--paper); overflow: hidden; }
+body.readable { font-family: Verdana, Tahoma, sans-serif; letter-spacing: .04em; word-spacing: .12em; }
+button { font: inherit; min-height: 48px; min-width: 48px; padding: 0 1rem; border-radius: 16px; border: 0; background: var(--brand); color: #fff; cursor: pointer; }
+button.secondary { background: #fff; color: var(--brand); border: 3px solid var(--brand); }
+button:disabled { opacity: .45; cursor: default; }
+button.big { font-size: 2rem; min-height: 80px; padding: 0 2rem; }
+:focus-visible { outline: 4px solid var(--brand); outline-offset: 3px; }
+[hidden] { display: none !important; }
+h1, h2 { margin: 0; }
+h2 { font-size: 1.1rem; }
+.bar { display: flex; align-items: center; gap: .5rem; }
+.prompt { flex: 1; margin: 0; font-size: 1.5rem; font-weight: 600; display: flex; gap: .5rem; align-items: center; }
+#icon { font-size: 2rem; }
+section { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: .4rem; }
+#intro, #end { justify-content: center; align-items: center; text-align: center; gap: 1.5rem; }
+#area { flex: 1; min-height: 0; overflow: auto; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: center; }
+.controls { display: flex; gap: .6rem; justify-content: center; }
+#feedback { margin: 0; min-height: 1.4em; text-align: center; font-weight: 600; }
+.good { color: var(--calm); } .hint { color: var(--warn); }
+.manip { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .3rem; min-width: 0; }
+.manip figcaption { font-size: 1rem; font-weight: 600; }
+.count { font-size: 1.2rem; }
+/* One twin at a time: the picture by default, the buttons when the child (or their accessibility setting) asks. */
+.dom { display: none !important; }
+body.buttons .dom { display: grid !important; }
+body.buttons .visual, body.buttons .visualonly { display: none !important; }
+svg.visual { max-width: 100%; height: auto; }
+svg.frame { width: min(42vw, 330px); }
+svg.path { width: min(96vw, 900px); }
+svg.line { width: min(96vw, 900px); }
+/* Ten-frame */
+.cell rect { fill: #fff; stroke: var(--ink); stroke-width: 3; }
+.cell circle { fill: transparent; }
+.cell.on circle { fill: var(--brand); }
+.cell.locked circle, .cellbtn.locked { fill: var(--calm); background: #d8efe9; }
+.cell.ghost circle { fill: transparent; stroke: var(--brand); stroke-width: 4; stroke-dasharray: 6 5; }
+.cell.mark rect, .cellbtn.mark { fill: #ffe9a8; background: #ffe9a8; }
+.cell.pulse rect, .cellbtn.pulse { fill: #ffe9a8; background: #ffe9a8; animation: pulse 1s ease-in-out infinite alternate; }
+@keyframes pulse { from { opacity: 1; } to { opacity: .35; } }
+.framegrid { grid-template-columns: repeat(5, 56px); gap: 4px; }
+.cellbtn { width: 56px; height: 56px; border: 3px solid var(--ink); border-radius: 8px; background: #fff; color: var(--brand); font-size: 2rem; display: grid; place-items: center; padding: 0; }
+.cellbtn:nth-child(n + 11):nth-child(-n + 15) { margin-top: 14px; } /* the gap before the second frame */
+.cellbtn.ghost { border-style: dashed; }
+/* Number path */
+.sq rect { fill: #fff; stroke: var(--ink); stroke-width: 3; }
+.sq text { font-size: 30px; font-weight: 700; fill: var(--ink); }
+.sq .dot { fill: transparent; }
+.sq.marked .dot { fill: var(--warn); }
+.sq.hl1 rect, .pathlist button.hl1 { fill: #ffe9a8; background: #ffe9a8; }
+.sq.hl2 rect, .pathlist button.hl2 { fill: #d8efe9; background: #d8efe9; }
+.sq.star rect { stroke: var(--gold); stroke-width: 6; } .pathlist button.star { outline: 6px solid var(--gold); }
+.pathlist button.marked { box-shadow: inset 0 -8px 0 var(--warn); }
+.pathlist button.here1 { background: var(--brand); color: #fff; } .pathlist button.here2 { background: var(--calm); color: #fff; }
+.arcs path { fill: none; stroke: var(--brand); stroke-width: 5; }
+.arcs path.model { stroke-dasharray: 10 6; }
+.piece1 { fill: var(--brand); } .piece2 { fill: var(--calm); }
+.pathlist { list-style: none; margin: 0; padding: 0; grid-template-columns: repeat(11, minmax(48px, 1fr)); gap: 4px; }
+.pathlist button { width: 100%; padding: 0; background: #fff; color: var(--ink); border: 3px solid var(--ink); }
+.jumps, .ticks { margin: 0; font-size: 1rem; }
+/* Number line */
+svg.line line { stroke: var(--ink); stroke-width: 4; }
+svg.line text { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.track { fill: transparent; cursor: pointer; }
+.marker path { fill: var(--brand); }
+.truth circle { fill: var(--calm); }
+.linelabel { gap: .4rem; justify-items: center; }
+.linelabel input { width: min(90vw, 700px); width: min(100cqw - 1rem, 700px); height: 48px; }
+.pick { display: flex; gap: 1rem; }
+/* 1.1.0: marks on counters and beads */
+.cell.tint circle, .cellbtn.tint { fill: var(--calm); color: var(--calm); }
+.cell.twice rect, .cellbtn.twice { fill: #ffd2a8; background: #ffd2a8; }
+.cell.gone circle { fill: transparent; stroke: var(--warn); stroke-width: 4; stroke-dasharray: 5 5; } .cellbtn.gone { border-style: dashed; color: var(--warn); }
+/* Layout helpers for 1.1.0 boards */
+.card { margin: 0; font-size: 1.6rem; font-weight: 700; text-align: center; flex-basis: 100%; }
+.row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: center; }
+.planker { display: flex; flex-direction: column; gap: .4rem; align-items: stretch; }
+.tray { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; max-width: 220px; font-size: 1.6rem; justify-content: center; }
+.token { color: var(--calm); min-width: 1.4em; text-align: center; border-radius: 8px; }
+.token.used { filter: grayscale(1); outline: 2px dashed #555; } .token.twice { opacity: 1; color: #8a3b00; outline: 3px dashed #c05600; }
+.tray.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+/* Stepper */
+.stepper { display: inline-flex; align-items: center; gap: .4rem; }
+.steplabel { font-size: 1rem; font-weight: 600; }
+.stepval { min-width: 2.5ch; text-align: center; font-size: 1.5rem; font-weight: 700; }
+.stepper.pulse, .controls .pulse, button.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+/* Bead rack */
+svg.rack { width: min(42vw, 360px); }
+.rack .wire { stroke: var(--ink); stroke-width: 4; }
+.bead { stroke: var(--ink); stroke-width: 2.5; } .bead.red { fill: #b3261e; } .bead.white { fill: #fff; }
+.bead.tint { stroke: var(--calm); stroke-width: 6; } .bead.twice { stroke: #c05600; stroke-width: 6; stroke-dasharray: 4 3; }
+.bead.gone { fill-opacity: .25; stroke-dasharray: 5 4; }
+.racktext, .jtext { margin: 0; font-size: 1rem; }
+/* Jump line */
+.manip.wide { flex-basis: 100%; }
+svg.jline { width: min(96vw, 900px); max-height: 28vh; }
+.jline .axis { stroke: var(--ink); stroke-width: 4; } .jline .tick { stroke: var(--ink); stroke-width: 2; }
+.jline .bank { fill: #c9e4c5; } .jline .river { fill: #a9cdea; }
+.jline text { font-size: 26px; font-weight: 700; fill: var(--ink); } .jline text.far { fill: var(--brand); }
+.planks path { fill: none; stroke: #7a4a16; stroke-width: 8; stroke-linecap: round; } .planks text { font-size: 24px; fill: #7a4a16; }
+.planks.ghost path { stroke: var(--brand); stroke-width: 5; stroke-dasharray: 10 7; } .planks.ghost text { fill: var(--brand); }
+.jline .short { stroke: var(--warn); stroke-width: 8; stroke-dasharray: 12 8; } .jline .extra { stroke: #c05600; stroke-width: 10; }
+.walker circle, .walker path { fill: var(--brand); }
+.jline .hit { fill: transparent; cursor: pointer; }
+/* Base-ten mat */
+svg.mat { width: min(60vw, 560px); max-height: 40vh; }
+.mat .col rect:first-child { fill: #fff; stroke: var(--ink); stroke-width: 3; cursor: pointer; }
+.mat .col > text { font-size: 26px; font-weight: 700; fill: var(--ink); } .mat text.empty { font-size: 24px; fill: #555; }
+.mat .col.pulse rect:first-child { fill: #ffe9a8; animation: pulse 1s ease-in-out infinite alternate; }
+.flat, .stick, .cube { fill: #9bc4f0; stroke: var(--ink); stroke-width: 2; } .stick { fill: #7fb27b; } .cube { fill: #f2c46d; }
+.mat .mark { fill: #ffe9a8; stroke-width: 4; }
+.matlist { list-style: none; margin: 0; padding: 0; gap: .2rem; } .matlist .pulse { background: #ffe9a8; }
+/* Pattern tiles */
+svg.strip { height: auto; }
+.tile .frame { fill: #fff; stroke: #888; stroke-width: 2; }
+.tile.core .frame, .striplist .core { fill: #d8efe9; stroke: var(--calm); stroke-width: 5; background: #d8efe9; outline: 4px solid var(--calm); }
+.tile.mark .frame, .striplist .mark { fill: #ffe9a8; stroke: var(--gold); stroke-width: 6; background: #ffe9a8; }
+.tile.ghost .frame, .striplist .ghost { stroke: var(--brand); stroke-dasharray: 8 5; stroke-width: 4; }
+.tile.pulse .frame { animation: pulse 1s ease-in-out infinite alternate; }
+.tileart { width: 48px; height: 48px; display: block; } .tileart .shape { stroke: var(--ink); stroke-width: 3; }
+.tileart .slot { fill: #fff; stroke: #666; stroke-width: 3; stroke-dasharray: 8 6; } .tileart .emoji { font-size: 34px; }
+.striplist { list-style: none; margin: 0; padding: 0; flex-wrap: wrap; justify-content: center; gap: 4px; }
+body.buttons .striplist.dom { display: flex !important; }
+.striplist button, .tilebox { padding: 2px; min-width: 56px; background: #fff; border: 3px solid var(--ink); border-radius: 10px; display: inline-grid; place-items: center; }
+.palette { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+.palette button { padding: 4px; background: #fff; border: 3px solid var(--ink); display: inline-flex; align-items: center; gap: .3rem; color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+/* 1.2.0 layouts: a tablet, a resizable browser window and a phone (upright or on its side) play the same board. A board
+   sizes to the board area (#area, a size container) as well as the width, but never below a comfortable tap size: where
+   it cannot shrink further, #area scrolls, so Check never covers it. */
+#area { container-type: size; }
+svg.frame { max-height: max(calc(100cqh - 2.5rem), 190px); }
+svg.path { max-height: max(calc(100cqh - 7rem), 150px); }
+span.cellbtn { width: 40px; height: 40px; font-size: 1.4rem; } .framegrid:has(> span) { grid-template-columns: repeat(5, 40px); } /* read-only counters are not tap targets */
+/* A phone (upright, ≤ 640 px wide) or a short wide screen (a phone on its side, a small window): tighter type and gaps. */
+@media (max-width: 640px), (max-height: 520px) and (orientation: landscape) {
+  body { font-size: 1.05rem; padding: .3rem; gap: .2rem; }
+  .prompt { font-size: 1.1rem; } #icon { font-size: 1.4rem; }
+  #area, .row { gap: .4rem; }
+}
+@media (max-width: 640px) {
+  .bar { flex-wrap: wrap; justify-content: flex-end; } .prompt { flex-basis: 100%; }
+  .card { font-size: 1.2rem; } .count { font-size: 1rem; } .palette button { font-size: .95rem; }
+  .pathlist { grid-template-columns: repeat(6, 48px); }
+}
+/* On its side: Undo and Check move to a column beside the board, which gets the full height. */
+@media (max-height: 520px) and (orientation: landscape) {
+  #play { display: grid; grid-template: auto auto 1fr / 1fr minmax(0, 11rem); grid-template-areas: "area stage" "area controls" "area feedback"; gap: .3rem .6rem; overflow-y: auto; }
+  #stage { grid-area: stage; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #area { grid-area: area; }
+  .controls { grid-area: controls; flex-direction: column; }
+  #feedback { grid-area: feedback; text-align: left; }
+}
+
+/* ======================================================================================================================
+   1.3.0: the Lumos design language (DESIGN.md is the source; these tokens are its kid dialect) and the game-feel layer.
+   Warm paper, one violet for action, sun for "look here", leaf for right, coral for "look again" (never red, never an X).
+   Chunky buttons that press down; every press answers at once; motion is short and stops for prefers-reduced-motion.
+   ====================================================================================================================== */
+:root { --ink:#1b1f3b; --paper:#fff8ec; --card:#fff; --brand:#3a2fa8; --brand-deep:#261d7a; --soft:#ece9ff;
+  --sun:#ffb020; --sun-soft:#ffecb3; --leaf:#0f6b5c; --leaf-soft:#d6f0e6; --coral:#8a3b00; --coral-soft:#ffe3d1;
+  --sky:#3d8bd9; --sky-soft:#e3efff; --calm:var(--leaf); --warn:var(--coral); --gold:#b8860b;
+  --round: ui-rounded, "SF Pro Rounded", system-ui, sans-serif; }
+body { font-family: var(--round); background: var(--paper); gap: .5rem; padding: .6rem .7rem; }
+body.readable { font-family: Verdana, Tahoma, sans-serif; }
+button { min-height: 56px; min-width: 56px; border-radius: 18px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+  box-shadow: 0 5px 0 var(--brand-deep); transition: transform .08s ease-out, box-shadow .08s ease-out; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+button:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 var(--brand-deep); }
+button.secondary { background: var(--card); box-shadow: 0 4px 0 color-mix(in srgb, var(--brand) 35%, transparent); }
+button.secondary:active:not(:disabled) { box-shadow: 0 1px 0 color-mix(in srgb, var(--brand) 35%, transparent); }
+button:disabled { opacity: .4; box-shadow: none; }
+button.big { min-height: 76px; font-size: 1.9rem; padding: 0 2.4rem; border-radius: 24px; }
+.ico { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.ico-play { fill: currentColor; } .ico-star { fill: var(--sun); stroke: var(--ink); stroke-width: 1.5; }
+button.icon { padding: 0; width: 56px; } button.icon .ico { width: 30px; height: 30px; }
+/* The prompt bar: the goal in one line, spoken, with "hear it again" beside it. */
+.bar { gap: .5rem; flex-wrap: nowrap; }
+.prompt { font-size: 1.6rem; line-height: 1.2; font-weight: 800; }
+#icon:empty { display: none; }
+.watch { display: inline-flex; align-items: center; gap: .3rem; padding: .3rem .8rem; border-radius: 999px; background: var(--sun-soft); color: var(--ink); font-weight: 800; white-space: nowrap; }
+.watch.nudge { animation: nudge .35s ease-out; }
+@keyframes nudge { 30% { transform: translateY(-6px) scale(1.08); } 60% { transform: translateY(1px); } }
+#stage { align-self: center; font-size: 1rem; font-weight: 700; padding: .15rem .8rem; border-radius: 999px; background: var(--soft); }
+/* Controls: Check is the big obvious one; Undo sits beside it. */
+.controls { gap: .7rem; padding-bottom: 4px; }
+#check, #next { min-width: min(16rem, 55vw); font-size: 1.4rem; }
+#check.waiting:disabled { opacity: 1; }
+#check.waiting .lbl::after { content: ""; display: inline-block; width: 1.2em; text-align: left; animation: dots .9s steps(3) infinite; }
+@keyframes dots { 0% { content: "."; } 33% { content: ".."; } 66% { content: "..."; } }
+/* Feedback: right is leaf and a glow on the board; "look again" is coral, kind, and comes with help. */
+#feedback { align-self: center; padding: .2rem 1rem; border-radius: 999px; }
+#feedback:empty { padding: 0; }
+#feedback.good:not(:empty) { background: var(--leaf-soft); animation: pop-in .35s cubic-bezier(.34,1.56,.64,1); }
+#feedback.hint:not(:empty) { background: var(--coral-soft); animation: slide-in .3s ease-out; }
+@keyframes pop-in { from { transform: scale(.6); opacity: 0; } }
+@keyframes slide-in { from { transform: translateY(8px); opacity: 0; } }
+body.yay #area { animation: glow 1s ease-out; border-radius: 20px; }
+@keyframes glow { 0% { box-shadow: inset 0 0 0 0 var(--leaf-soft); } 30% { box-shadow: inset 0 0 0 10px var(--leaf-soft); } 100% { box-shadow: inset 0 0 0 0 var(--leaf-soft); } }
+/* Every press answers at once: HTML targets squash, picture targets flash. */
+.pop:not(g) { animation: pop .18s ease-out; }
+g.pop, svg .pop { animation: flash .22s ease-out; }
+@keyframes pop { 40% { transform: scale(.92); } }
+@keyframes flash { 0% { opacity: .45; } }
+/* Teach, then fade: after a demonstrator, "Your turn!" pops up and fades away by itself. */
+.turn { position: fixed; left: 50%; top: 38%; margin: 0; padding: .5rem 1.6rem; border-radius: 999px; background: var(--sun); color: var(--ink);
+  font-size: 2rem; font-weight: 800; pointer-events: none; opacity: 0; transform: translate(-50%, -50%); }
+.turn.show { animation: turn 1.8s ease-out forwards; }
+@keyframes turn { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.6); } 15%, 70% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1); } }
+/* Start and end screens: the game's own tile, its name, its goal in one line, one big Start. */
+#intro .tile { width: 112px; height: 112px; padding: 10px; background: var(--card); border: 4px solid var(--brand); border-radius: 28px; box-shadow: 0 6px 0 var(--brand-deep); }
+#intro h1 { font-size: 2.3rem; }
+body:has(#intro:not([hidden])) .prompt { visibility: hidden; } /* the start screen shows the same words, bigger */
+#goal { margin: 0; max-width: 26ch; font-size: 1.45rem; font-weight: 700; }
+#end .ico-star { width: 96px; height: 96px; } #end h1 { font-size: 2.3rem; }
+/* Manipulatives keep their structure; the picture is drawn in the same ink and fills. */
+.manip figcaption { font-weight: 700; }
+.cell rect, .sq .station { fill: var(--card); }
+.stepper { gap: .5rem; } .stepper button { min-width: 56px; font-size: 1.6rem; }
+/* The number path as a railway (kit.js numberPath). */
+svg.path { width: min(100cqw - .5rem, 940px); max-height: none; }
+@container (max-height: 380px) { #area button { min-height: 48px; } } /* a short board: its own controls at the 48 px floor, so it fits */
+@container (min-width: 700px) { svg.path { max-height: calc(100cqh - 9rem); } } /* a short wide window: two rows scale down rather than scroll; a phone scrolls */
+.rail .ties { fill: none; stroke: #c9a26b; stroke-width: 16; stroke-dasharray: 5 11; }
+.rail .track { fill: none; stroke: #6b4a2b; stroke-width: 5; stroke-linejoin: round; }
+.sq rect.hit { fill: transparent !important; stroke: none !important; cursor: pointer; } /* never takes a highlight */
+.rail .onward { fill: none; stroke: #6b4a2b; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.sq .station { stroke: var(--ink); stroke-width: 3; }
+.sq text { font-size: 30px; font-weight: 800; pointer-events: none; }
+.sq .dot { fill: transparent; } .sq.marked .dot { fill: var(--sun); stroke: var(--ink); stroke-width: 2.5; }
+.sq.marked .station { fill: #fff6dc; }
+.sq.start .station { fill: var(--sky-soft); stroke: var(--sky); stroke-width: 5; }
+.sq.hl1 .station, .pathlist button.hl1 { fill: var(--sun-soft); background: var(--sun-soft); }
+.sq.hl2 .station, .pathlist button.hl2 { fill: var(--leaf-soft); background: var(--leaf-soft); }
+.sq.star .station { stroke: var(--gold); stroke-width: 6; }
+.sq .starmark { display: none; fill: var(--sun); stroke: var(--ink); stroke-width: 2; } .sq.star .starmark { display: inline; }
+.pathlist button.start { outline: 5px solid var(--sky); }
+.arcs path { stroke-width: 5; stroke-linecap: round; }
+.train { transition: transform .34s cubic-bezier(.34,1.4,.64,1); }
+.train .cab, .train .body { fill: var(--brand); stroke: var(--ink); stroke-width: 2.5; }
+.train.piece2 .cab, .train.piece2 .body { fill: var(--leaf); }
+.train .win, .train .lamp { fill: var(--sun); } .train .chimney { fill: var(--ink); }
+.train .wheel { fill: var(--card); stroke: var(--ink); stroke-width: 3; }
+.train .roof { stroke: var(--ink); stroke-width: 5; stroke-linecap: round; } .train .stripe { stroke: var(--sun); stroke-width: 4; }
+/* A phone: the board is the screen. Bigger targets, the prompt beside its speaker, the view switch as an icon. */
+@media (max-width: 640px) {
+  body { padding: .35rem .45rem; }
+  .bar { flex-wrap: nowrap; } .prompt { flex-basis: auto; font-size: 1.2rem; }
+  #view .lbl, .watch { font-size: 0; gap: 0; } #view { width: 56px; padding: 0; } .watch { padding: .35rem; }
+  .watch .ico { width: 26px; height: 26px; }
+  .controls { gap: .5rem; } #check, #next { flex: 1; min-width: 0; } #undo { flex: none; }
+  svg.frame { width: min(86cqw, 330px); }
+  #intro .tile { width: 92px; height: 92px; } #intro h1, #end h1 { font-size: 1.8rem; } #goal { font-size: 1.2rem; }
+}
+@media (max-height: 520px) and (orientation: landscape) { #check, #next { min-width: 0; } }
+/* Number Path's ticket: one hole per stop, punched as the child taps (kit.css because the railway lives in the kit). */
+.ticket { margin: 0; display: flex; align-items: center; gap: .45rem; padding: .35rem .9rem; border: 3px dashed var(--ink); border-radius: 14px; background: var(--card); flex-basis: auto; }
+.ticket .hole { width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--ink); background: var(--paper); }
+.ticket .hole.punched { background: var(--sun); animation: pop .2s ease-out; }
+.ticket .ico { width: 32px; height: 32px; } .ticket .ico.back { transform: scaleX(-1); }
+/* ======================================================================================================================
+   1.4.0, section 11: the Lumos look (DESIGN.md v2; these tokens are the same as src/app/globals.css).
+   The frame is a night sky; everything a child reads or taps sits on white (the board, the prompt bar, the start and end
+   cards) or is a solid button, so contrast never depends on where the sky's gradient happens to be.
+   ====================================================================================================================== */
+@font-face { font-family: "Andika"; src: url(fonts/andika-400.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Andika"; src: url(fonts/andika-700.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Fredoka"; src: url(fonts/fredoka.woff2) format("woff2"); font-weight: 300 700; font-display: swap; }
+:root { --ink:#1b1f3b; --paper:#fff8ec; --card:#fff; --night:#1e1660; --brand:#5536e0; --brand-deep:#3a2fa8; --soft:#ece9ff;
+  --sun:#ffd23f; --sun-soft:#fff1b8; --rose:#c2185b; --sky:#1f62b0; --sky-soft:#e3efff;
+  --leaf:#0f6b5c; --leaf-soft:#d6f0e6; --coral:#8a3b00; --coral-soft:#ffe3d1; --calm:var(--leaf); --warn:var(--coral); --gold:#b8860b;
+  --read: "Andika", ui-rounded, system-ui, sans-serif; --display: "Fredoka", "Andika", ui-rounded, system-ui, sans-serif;
+  --sky-bg: linear-gradient(180deg, #1e1660 0%, #3b28b0 32%, #8a63e6 68%, #ffc7de 100%); }
+body { font-family: var(--read); background: var(--sky-bg) fixed; }
+body:not(.readable) :is(h1, button, #feedback, .turn) { font-family: var(--display); letter-spacing: .01em; }
+.bar { background: var(--card); border-radius: 22px; padding: 0 .35rem 0 .9rem; box-shadow: 0 4px 0 rgba(30,22,96,.35); }
+.prompt { font-weight: 700; color: var(--night); }
+#stage { background: rgba(255,255,255,.18); color: #fff; border: 2px solid rgba(255,255,255,.55); }
+#area { background: var(--card); border-radius: 26px; box-shadow: 0 0 0 4px var(--ink), 0 0 0 9px rgba(255,255,255,.3); } /* a ring, not a border: takes no room from the board */
+body.yay #area { animation: lit 1s ease-out; }
+@keyframes lit { 30% { box-shadow: 0 0 0 4px var(--ink), 0 0 0 9px var(--sun), 0 0 34px 10px rgba(255,210,63,.7); } }
+#intro, #end { flex: 0 1 auto; margin: auto; padding: 1.4rem 1.6rem; background: var(--card); border-radius: 28px; max-width: 34rem;
+  box-shadow: 0 0 0 5px rgba(255,255,255,.3), 0 0 40px 6px rgba(255,210,63,.35); }
+#feedback.good:not(:empty), #feedback.hint:not(:empty) { box-shadow: 0 3px 0 rgba(30,22,96,.25); }
+@media (max-width: 640px) { #intro, #end { padding: 1rem; } }
+body:has(#intro:not([hidden])) .bar { background: none; box-shadow: none; } /* the start card already says the goal */

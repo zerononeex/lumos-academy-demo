@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hundred Chart Trek</title>
+<link rel="stylesheet" href="../../kit/1.2.0/kit.css">
+<style>
+  /* The chart is a picture (every action is a button beside it): square, as big as the board allows. */
+  svg.chart { width: min(94vw, max(calc(100cqh - 2.5rem), 220px)); }
+  @container (max-width: 760px) { svg.chart { width: min(94vw, max(calc((100cqh - 17rem) * 1.15), 220px)); } } /* the clues under the chart */
+  .cell rect { fill: #fff; stroke: #888; stroke-width: 1.5; } .cell text { font-size: 20px; font-weight: 600; fill: var(--ink); }
+  .chart.big .cell text { font-size: 16px; }
+  .cell.trail rect { fill: #d8efe9; } .cell.mark rect { fill: #ffe9a8; } .cell.cursor rect { stroke: var(--brand); stroke-width: 5; }
+  .cell.covered rect { fill: #c9a26b; } .cell.ask rect { fill: #fff6d6; stroke: var(--brand); stroke-width: 5; } .cell.ask text { fill: var(--brand); font-weight: 800; }
+  .cell.pulse rect { fill: #ffe9a8; animation: pulse 1s ease-in-out infinite alternate; }
+  .trailline { stroke: var(--brand); stroke-width: 5; fill: none; stroke-linecap: round; opacity: .8; }
+  .trailline.wrap { stroke: #c05600; stroke-dasharray: 10 7; } .trailline.down { stroke: var(--calm); }
+  .trailline.anim { animation: draw 1.4s ease-in-out; } @keyframes draw { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
+  .tag { font-size: 20px; font-weight: 700; fill: #c05600; paint-order: stroke; stroke: #fff; stroke-width: 5px; } .tag.down { fill: var(--calm); }
+  .ten { font-size: 17px; font-weight: 700; fill: var(--calm); }
+  .you { fill: var(--brand); fill-opacity: .55; stroke: var(--brand); stroke-width: 3; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: .5rem; max-width: 22rem; }
+  .cluecard { font-size: 1.2rem; } .cluecard p, .cluecard ol { margin: 0; } .cluecard .clue { font-weight: 700; } .cluecard .pick { font-size: 1.5rem; font-weight: 700; }
+  .moves { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; } .moves button { font-size: 1.05rem; }
+  .picker { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; }
+  .charttext { margin: 0; font-size: 1rem; }
+  @media (max-width: 640px) { .side { max-width: 100%; } .cluecard { font-size: 1rem; } .moves button { font-size: .95rem; padding: 0 .5rem; } }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.1.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

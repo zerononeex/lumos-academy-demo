@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Balance Scale</title>
+<link rel="stylesheet" href="../../kit/1.2.0/kit.css">
+<style>
+  /* The scale: the beam tips toward the side with more value (the tilt is the feedback); held still until Check when
+     the child predicts. Tiles are sized by value as well as numbered; a balloon lifts its side (take away). */
+  svg.scale { width: min(96vw, 640px); max-height: max(calc(100cqh - 9rem), 150px); }
+  .beam, .pan { transition: transform .7s ease-in-out; }
+  .beam rect { fill: #7a4a16; } .post { fill: #c9a26b; stroke: var(--ink); stroke-width: 3; }
+  .pan line { stroke: var(--ink); stroke-width: 2.5; } .tray { fill: #555; }
+  .pan.pulse .tray { fill: var(--gold); animation: pulse 1s ease-in-out infinite alternate; }
+  .tile rect { fill: #9bc4f0; stroke: var(--ink); stroke-width: 2.5; rx: 6px; } .tile.weight rect { fill: #f2c46d; }
+  .tile text, .balloon text, .total { font-size: 22px; font-weight: 700; fill: var(--ink); }
+  .tile.box rect { fill: #fff; stroke: var(--brand); stroke-width: 4; stroke-dasharray: 8 5; } .tile.box text { fill: var(--brand); }
+  .balloon circle { fill: #ffd2e6; stroke: #a0305f; stroke-width: 3; } .balloon line { stroke: #a0305f; stroke-width: 2; }
+  .balloon.box circle { fill: #fff; stroke: var(--brand); stroke-dasharray: 8 5; }
+  .prop { fill: #c9a26b; stroke: var(--ink); stroke-width: 2; }
+  .scaletext { margin: 0; font-size: 1rem; }
+  .eq { margin: 0; font-size: 1.6rem; font-weight: 700; text-align: center; flex-basis: 100%; }
+  .eq .equals { color: var(--calm); padding: 0 .3em; } .eq small { display: block; font-size: 1rem; color: var(--calm); }
+  .loads { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+  @media (max-width: 640px) { .eq { font-size: 1.2rem; } }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.1.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

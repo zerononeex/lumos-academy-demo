@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build-a-Number</title>
+<link rel="stylesheet" href="../../kit/1.1.0/kit.css">
+<style>
+  /* The trades under the mat, two to a row, so a mat to 1000 still fits a tablet screen. */
+  .trades { flex-basis: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 22rem)); justify-content: center; gap: .4rem; }
+  .trades button { font-size: 1.1rem; }
+  .planker .count { max-width: 16rem; margin: 0; }
+  svg.mat { max-height: 34vh; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.1.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

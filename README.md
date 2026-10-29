@@ -1,7 +1,8 @@
-# Lumos Academy — demo showcase
+# Lumos Academy demo
 
-A static tour page (GitHub Pages) with screenshots of the working Lumos Academy
-demo build — fictional data only. The app itself is a server application and is
-not hosted here; its source repository is private.
+A clickable copy of the Lumos Academy demo: every screen for the district admin, teachers, a parent and children,
+and every game, on one invented school's fictional data. Nothing is saved and nothing is sent anywhere.
 
-Live: https://zerononeex.github.io/lumos-academy-demo/
+Open: https://zerononeex.github.io/lumos-academy-demo/demo
+
+This repository holds built files only. The source is private; this copy is rebuilt from it automatically.

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><!-- Lumos game tile: Ten-Frame Workshop. Original art (DESIGN.md, Iconography). -->
+<rect x="5" y="17" width="54" height="30" rx="5" fill="#fff" stroke="#1b1f3b" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M15.8 17v30M26.6 17v30M37.4 17v30M48.2 17v30M5 32h54" fill="none" stroke="#1b1f3b" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="10.4" cy="24.5" r="4.6" fill="#3a2fa8"/>
+<circle cx="21.2" cy="24.5" r="4.6" fill="#3a2fa8"/>
+<circle cx="32" cy="24.5" r="4.6" fill="#3a2fa8"/>
+<circle cx="42.8" cy="24.5" r="4.6" fill="#3a2fa8"/>
+<circle cx="53.6" cy="24.5" r="4.6" fill="#3a2fa8"/>
+<circle cx="10.4" cy="39.5" r="4.6" fill="#3a2fa8"/>
+<circle cx="21.2" cy="39.5" r="4.6" fill="#3a2fa8"/>
+</svg>

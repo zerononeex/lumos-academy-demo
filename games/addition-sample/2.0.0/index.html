@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Addition sample (contract proof)</title>
+<style>
+  :root { --ink:#1b1f3b; --paper:#fffdf7; --brand:#3a2fa8; --calm:#0f6b5c; --warn:#8a3b00; }
+  body { margin:0; padding:1rem; font:1.4rem/1.5 system-ui, sans-serif; color:var(--ink); background:var(--paper); }
+  body.readable { font-family: Verdana, Tahoma, sans-serif; letter-spacing:.04em; word-spacing:.12em; line-height:1.7; }
+  button, input { font:inherit; min-height:48px; min-width:48px; border-radius:12px; }
+  button { background:var(--brand); color:#fff; border:0; padding:0 1rem; cursor:pointer; }
+  button.secondary { background:#fff; color:var(--brand); border:3px solid var(--brand); }
+  input { border:3px solid var(--ink); padding:0 .5rem; width:6ch; font-size:2rem; }
+  :focus-visible { outline:4px solid var(--brand); outline-offset:3px; }
+  .bar { display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; justify-content:space-between; }
+  canvas { display:block; width:100%; max-width:720px; touch-action:manipulation; }
+  .feedback { min-height:3em; font-weight:600; }
+  .good { color:var(--calm); } .hint { color:var(--warn); }
+  [hidden] { display:none !important; }
+  .label { font-size:.9rem; opacity:.85 }
+</style>
+</head>
+<body>
+  <p class="label">Sample game — exists to prove the game contract, not to be fun.</p>
+  <div class="bar">
+    <button id="mode" class="secondary" type="button" aria-pressed="false">Switch to accessible mode</button>
+    <button id="readq" class="secondary" type="button" aria-label="Read the question aloud">🔊 Read</button>
+  </div>
+
+  <section id="teach" hidden>
+    <h1>Watch first</h1>
+    <p id="example"></p>
+    <button id="ready" type="button">I'm ready</button>
+  </section>
+
+  <section id="play" hidden>
+    <!-- Canvas mode: pictorial base-ten blocks, answer tiles are tapped (no dragging). -->
+    <div id="canvasMode">
+      <canvas id="board" width="720" height="420" aria-hidden="true"></canvas>
+    </div>
+    <!-- Accessible mode: the same learning task, keyboard-operable, no canvas. (No <form>: sandbox blocks submission.) -->
+    <div id="a11yMode" role="group" aria-labelledby="qtext" hidden>
+      <h1 id="qtext"></h1>
+      <p id="qblocks"></p>
+      <label>Your answer <input id="answer" type="number" inputmode="numeric" min="0" max="9999" required></label>
+      <button id="check" type="button">Check</button>
+    </div>
+    <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+    <p id="solved"></p>
+  </section>
+
+  <section id="end" hidden><h1>Finished</h1></section>
+  <script src="game.js"></script>
+</body>
+</html>

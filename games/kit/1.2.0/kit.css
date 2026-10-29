@@ -1,0 +1,157 @@
+/* Lumos game kit 1.2.0 stylesheet: 1.1.0 plus the layouts at the end (tablet, resizable window, phone upright or on its side).
+   kit.js is unchanged, so 1.2.0 games load kit/1.1.0/kit.js with this file. Contrast ≥ 4.5:1, targets ≥ 48 px, no motion if reduced. */
+:root { --ink:#1b1f3b; --paper:#fffdf7; --brand:#3a2fa8; --calm:#0f6b5c; --warn:#8a3b00; --soft:#e9e6ff; --gold:#b8860b; }
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { display: flex; flex-direction: column; gap: .4rem; padding: .6rem; font: 1.3rem/1.35 system-ui, sans-serif; color: var(--ink); background: var(--paper); overflow: hidden; }
+body.readable { font-family: Verdana, Tahoma, sans-serif; letter-spacing: .04em; word-spacing: .12em; }
+button { font: inherit; min-height: 48px; min-width: 48px; padding: 0 1rem; border-radius: 16px; border: 0; background: var(--brand); color: #fff; cursor: pointer; }
+button.secondary { background: #fff; color: var(--brand); border: 3px solid var(--brand); }
+button:disabled { opacity: .45; cursor: default; }
+button.big { font-size: 2rem; min-height: 80px; padding: 0 2rem; }
+:focus-visible { outline: 4px solid var(--brand); outline-offset: 3px; }
+[hidden] { display: none !important; }
+h1, h2 { margin: 0; }
+h2 { font-size: 1.1rem; }
+.bar { display: flex; align-items: center; gap: .5rem; }
+.prompt { flex: 1; margin: 0; font-size: 1.5rem; font-weight: 600; display: flex; gap: .5rem; align-items: center; }
+#icon { font-size: 2rem; }
+section { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: .4rem; }
+#intro, #end { justify-content: center; align-items: center; text-align: center; gap: 1.5rem; }
+#area { flex: 1; min-height: 0; overflow: auto; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: center; }
+.controls { display: flex; gap: .6rem; justify-content: center; }
+#feedback { margin: 0; min-height: 1.4em; text-align: center; font-weight: 600; }
+.good { color: var(--calm); } .hint { color: var(--warn); }
+.manip { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .3rem; min-width: 0; }
+.manip figcaption { font-size: 1rem; font-weight: 600; }
+.count { font-size: 1.2rem; }
+/* One twin at a time: the picture by default, the buttons when the child (or their accessibility setting) asks. */
+.dom { display: none !important; }
+body.buttons .dom { display: grid !important; }
+body.buttons .visual, body.buttons .visualonly { display: none !important; }
+svg.visual { max-width: 100%; height: auto; }
+svg.frame { width: min(42vw, 330px); }
+svg.path { width: min(96vw, 900px); }
+svg.line { width: min(96vw, 900px); }
+/* Ten-frame */
+.cell rect { fill: #fff; stroke: var(--ink); stroke-width: 3; }
+.cell circle { fill: transparent; }
+.cell.on circle { fill: var(--brand); }
+.cell.locked circle, .cellbtn.locked { fill: var(--calm); background: #d8efe9; }
+.cell.ghost circle { fill: transparent; stroke: var(--brand); stroke-width: 4; stroke-dasharray: 6 5; }
+.cell.mark rect, .cellbtn.mark { fill: #ffe9a8; background: #ffe9a8; }
+.cell.pulse rect, .cellbtn.pulse { fill: #ffe9a8; background: #ffe9a8; animation: pulse 1s ease-in-out infinite alternate; }
+@keyframes pulse { from { opacity: 1; } to { opacity: .35; } }
+.framegrid { grid-template-columns: repeat(5, 56px); gap: 4px; }
+.cellbtn { width: 56px; height: 56px; border: 3px solid var(--ink); border-radius: 8px; background: #fff; color: var(--brand); font-size: 2rem; display: grid; place-items: center; padding: 0; }
+.cellbtn:nth-child(n + 11):nth-child(-n + 15) { margin-top: 14px; } /* the gap before the second frame */
+.cellbtn.ghost { border-style: dashed; }
+/* Number path */
+.sq rect { fill: #fff; stroke: var(--ink); stroke-width: 3; }
+.sq text { font-size: 30px; font-weight: 700; fill: var(--ink); }
+.sq .dot { fill: transparent; }
+.sq.marked .dot { fill: var(--warn); }
+.sq.hl1 rect, .pathlist button.hl1 { fill: #ffe9a8; background: #ffe9a8; }
+.sq.hl2 rect, .pathlist button.hl2 { fill: #d8efe9; background: #d8efe9; }
+.sq.star rect { stroke: var(--gold); stroke-width: 6; } .pathlist button.star { outline: 6px solid var(--gold); }
+.pathlist button.marked { box-shadow: inset 0 -8px 0 var(--warn); }
+.pathlist button.here1 { background: var(--brand); color: #fff; } .pathlist button.here2 { background: var(--calm); color: #fff; }
+.arcs path { fill: none; stroke: var(--brand); stroke-width: 5; }
+.arcs path.model { stroke-dasharray: 10 6; }
+.piece1 { fill: var(--brand); } .piece2 { fill: var(--calm); }
+.pathlist { list-style: none; margin: 0; padding: 0; grid-template-columns: repeat(11, minmax(48px, 1fr)); gap: 4px; }
+.pathlist button { width: 100%; padding: 0; background: #fff; color: var(--ink); border: 3px solid var(--ink); }
+.jumps, .ticks { margin: 0; font-size: 1rem; }
+/* Number line */
+svg.line line { stroke: var(--ink); stroke-width: 4; }
+svg.line text { font-size: 26px; font-weight: 700; fill: var(--ink); }
+.track { fill: transparent; cursor: pointer; }
+.marker path { fill: var(--brand); }
+.truth circle { fill: var(--calm); }
+.linelabel { gap: .4rem; justify-items: center; }
+.linelabel input { width: min(90vw, 700px); width: min(100cqw - 1rem, 700px); height: 48px; }
+.pick { display: flex; gap: 1rem; }
+/* 1.1.0: marks on counters and beads */
+.cell.tint circle, .cellbtn.tint { fill: var(--calm); color: var(--calm); }
+.cell.twice rect, .cellbtn.twice { fill: #ffd2a8; background: #ffd2a8; }
+.cell.gone circle { fill: transparent; stroke: var(--warn); stroke-width: 4; stroke-dasharray: 5 5; } .cellbtn.gone { border-style: dashed; color: var(--warn); }
+/* Layout helpers for 1.1.0 boards */
+.card { margin: 0; font-size: 1.6rem; font-weight: 700; text-align: center; flex-basis: 100%; }
+.row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: center; }
+.planker { display: flex; flex-direction: column; gap: .4rem; align-items: stretch; }
+.tray { margin: 0; display: flex; flex-wrap: wrap; gap: 6px; max-width: 220px; font-size: 1.6rem; justify-content: center; }
+.token { color: var(--calm); min-width: 1.4em; text-align: center; border-radius: 8px; }
+.token.used { filter: grayscale(1); outline: 2px dashed #555; } .token.twice { opacity: 1; color: #8a3b00; outline: 3px dashed #c05600; }
+.tray.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+/* Stepper */
+.stepper { display: inline-flex; align-items: center; gap: .4rem; }
+.steplabel { font-size: 1rem; font-weight: 600; }
+.stepval { min-width: 2.5ch; text-align: center; font-size: 1.5rem; font-weight: 700; }
+.stepper.pulse, .controls .pulse, button.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+/* Bead rack */
+svg.rack { width: min(42vw, 360px); }
+.rack .wire { stroke: var(--ink); stroke-width: 4; }
+.bead { stroke: var(--ink); stroke-width: 2.5; } .bead.red { fill: #b3261e; } .bead.white { fill: #fff; }
+.bead.tint { stroke: var(--calm); stroke-width: 6; } .bead.twice { stroke: #c05600; stroke-width: 6; stroke-dasharray: 4 3; }
+.bead.gone { fill-opacity: .25; stroke-dasharray: 5 4; }
+.racktext, .jtext { margin: 0; font-size: 1rem; }
+/* Jump line */
+.manip.wide { flex-basis: 100%; }
+svg.jline { width: min(96vw, 900px); max-height: 28vh; }
+.jline .axis { stroke: var(--ink); stroke-width: 4; } .jline .tick { stroke: var(--ink); stroke-width: 2; }
+.jline .bank { fill: #c9e4c5; } .jline .river { fill: #a9cdea; }
+.jline text { font-size: 26px; font-weight: 700; fill: var(--ink); } .jline text.far { fill: var(--brand); }
+.planks path { fill: none; stroke: #7a4a16; stroke-width: 8; stroke-linecap: round; } .planks text { font-size: 24px; fill: #7a4a16; }
+.planks.ghost path { stroke: var(--brand); stroke-width: 5; stroke-dasharray: 10 7; } .planks.ghost text { fill: var(--brand); }
+.jline .short { stroke: var(--warn); stroke-width: 8; stroke-dasharray: 12 8; } .jline .extra { stroke: #c05600; stroke-width: 10; }
+.walker circle, .walker path { fill: var(--brand); }
+.jline .hit { fill: transparent; cursor: pointer; }
+/* Base-ten mat */
+svg.mat { width: min(60vw, 560px); max-height: 40vh; }
+.mat .col rect:first-child { fill: #fff; stroke: var(--ink); stroke-width: 3; cursor: pointer; }
+.mat .col > text { font-size: 26px; font-weight: 700; fill: var(--ink); } .mat text.empty { font-size: 24px; fill: #555; }
+.mat .col.pulse rect:first-child { fill: #ffe9a8; animation: pulse 1s ease-in-out infinite alternate; }
+.flat, .stick, .cube { fill: #9bc4f0; stroke: var(--ink); stroke-width: 2; } .stick { fill: #7fb27b; } .cube { fill: #f2c46d; }
+.mat .mark { fill: #ffe9a8; stroke-width: 4; }
+.matlist { list-style: none; margin: 0; padding: 0; gap: .2rem; } .matlist .pulse { background: #ffe9a8; }
+/* Pattern tiles */
+svg.strip { height: auto; }
+.tile .frame { fill: #fff; stroke: #888; stroke-width: 2; }
+.tile.core .frame, .striplist .core { fill: #d8efe9; stroke: var(--calm); stroke-width: 5; background: #d8efe9; outline: 4px solid var(--calm); }
+.tile.mark .frame, .striplist .mark { fill: #ffe9a8; stroke: var(--gold); stroke-width: 6; background: #ffe9a8; }
+.tile.ghost .frame, .striplist .ghost { stroke: var(--brand); stroke-dasharray: 8 5; stroke-width: 4; }
+.tile.pulse .frame { animation: pulse 1s ease-in-out infinite alternate; }
+.tileart { width: 48px; height: 48px; display: block; } .tileart .shape { stroke: var(--ink); stroke-width: 3; }
+.tileart .slot { fill: #fff; stroke: #666; stroke-width: 3; stroke-dasharray: 8 6; } .tileart .emoji { font-size: 34px; }
+.striplist { list-style: none; margin: 0; padding: 0; flex-wrap: wrap; justify-content: center; gap: 4px; }
+body.buttons .striplist.dom { display: flex !important; }
+.striplist button, .tilebox { padding: 2px; min-width: 56px; background: #fff; border: 3px solid var(--ink); border-radius: 10px; display: inline-grid; place-items: center; }
+.palette { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+.palette button { padding: 4px; background: #fff; border: 3px solid var(--ink); display: inline-flex; align-items: center; gap: .3rem; color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+/* 1.2.0 layouts: a tablet, a resizable browser window and a phone (upright or on its side) play the same board. A board
+   sizes to the board area (#area, a size container) as well as the width, but never below a comfortable tap size: where
+   it cannot shrink further, #area scrolls, so Check never covers it. */
+#area { container-type: size; }
+svg.frame { max-height: max(calc(100cqh - 2.5rem), 190px); }
+svg.path { max-height: max(calc(100cqh - 7rem), 150px); }
+span.cellbtn { width: 40px; height: 40px; font-size: 1.4rem; } .framegrid:has(> span) { grid-template-columns: repeat(5, 40px); } /* read-only counters are not tap targets */
+/* A phone (upright, ≤ 640 px wide) or a short wide screen (a phone on its side, a small window): tighter type and gaps. */
+@media (max-width: 640px), (max-height: 520px) and (orientation: landscape) {
+  body { font-size: 1.05rem; padding: .3rem; gap: .2rem; }
+  .prompt { font-size: 1.1rem; } #icon { font-size: 1.4rem; }
+  #area, .row { gap: .4rem; }
+}
+@media (max-width: 640px) {
+  .bar { flex-wrap: wrap; justify-content: flex-end; } .prompt { flex-basis: 100%; }
+  .card { font-size: 1.2rem; } .count { font-size: 1rem; } .palette button { font-size: .95rem; }
+  .pathlist { grid-template-columns: repeat(6, 48px); }
+}
+/* On its side: Undo and Check move to a column beside the board, which gets the full height. */
+@media (max-height: 520px) and (orientation: landscape) {
+  #play { display: grid; grid-template: auto auto 1fr / 1fr minmax(0, 11rem); grid-template-areas: "area stage" "area controls" "area feedback"; gap: .3rem .6rem; overflow-y: auto; }
+  #stage { grid-area: stage; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #area { grid-area: area; }
+  .controls { grid-area: controls; flex-direction: column; }
+  #feedback { grid-area: feedback; text-align: left; }
+}

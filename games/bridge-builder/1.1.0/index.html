@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bridge Builder</title>
+<link rel="stylesheet" href="../../kit/1.2.0/kit.css">
+<style>
+  /* Line, counters and planks on one screen: the parts share the board's height (see the kit's layouts). */
+  svg.frame, svg.rack { width: auto; max-width: 100%; } /* the box keeps the drawing's shape, so the parts sit side by side */
+  svg.frame { height: clamp(150px, 45cqh, 180px); } svg.rack { height: clamp(56px, 18cqh, 80px); }
+  svg.jline { max-height: max(30cqh, 90px); }
+  .planker { flex-flow: row wrap; justify-content: center; align-items: center; max-width: 13rem; }
+  .planker:has(.stepper + .stepper) { max-width: 26rem; } /* tens and ones side by side, the buttons under them */
+  .manip .card { font-size: 1.3rem; max-width: 240px; }
+  @media (max-width: 640px) { /* the card beside the counters */
+    .manip .card { font-size: 1rem; max-width: 180px; } .tray { max-width: 180px; } svg.frame { height: 110px; } svg.rack { height: 36px; }
+  }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.1.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
