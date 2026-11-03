@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spinner Lab</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* A spinner in eighths, each colour named on its part (colour is never the only clue), and a tally of ten spins. */
+  svg.spinner { width: min(80cqw, 280px); max-height: max(calc(100cqh - 3rem), 220px); }
+  .part { stroke: var(--ink); stroke-width: 3; } .part.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+  .pointer { transition: transform .9s cubic-bezier(.2, .8, .3, 1); } .pointer path { fill: var(--ink); }
+  @media (prefers-reduced-motion: reduce) { .pointer { transition: none; } }
+  svg text { font-size: 18px; font-weight: 700; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+  svg.tally { width: min(92cqw, 300px); } .tallymark { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; } .tallyrow.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: .45rem; max-width: 380px; }
+  .picker, .picks { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; align-items: center; }
+  .picks button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+  .ask { margin: 0; font-size: 1.1rem; font-weight: 700; text-align: center; } .spintext { margin: 0; font-size: 1rem; }
+  table.spins { border-collapse: collapse; font-size: 1rem; } table.spins td, table.spins th { border: 2px solid var(--ink); padding: .1rem .6rem; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coin Market</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* Canadian coins at their true sizes against each other (a dime is smaller than a nickel), never under a 44 px tap. */
+  svg.tray { max-width: 96cqw; height: auto; } svg.hand { width: min(96cqw, 380px); } svg.stall { width: min(70cqw, 220px); }
+  svg.pair { width: min(96cqw, 400px); }
+  .silver { fill: #d9dde3; } .gold { fill: #e8b923; } .rim { fill: none; stroke: var(--ink); stroke-width: 3; }
+  .coin text { font-size: 17px; font-weight: 700; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+  .coin.picked .rim { stroke: var(--brand); stroke-width: 6; } .coin.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+  .handbox { fill: #fff8ec; stroke: var(--ink); stroke-width: 3; stroke-dasharray: 10 6; } .handbox.on { stroke: var(--brand); stroke-width: 5; }
+  svg text.tag { font-size: 26px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: .5rem; }
+  .picker, .picks { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; align-items: center; }
+  .picks button[aria-pressed="true"], .ways button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+  .coinlist { gap: .3rem; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); } .handtext { margin: 0; font-size: 1rem; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

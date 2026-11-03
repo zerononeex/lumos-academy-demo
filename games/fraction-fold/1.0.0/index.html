@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fraction Fold</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* A paper strip or a paper circle, folded into parts; a shaded part is sunny yellow. Unequal parts stay unequal on screen. */
+  svg.paper { width: min(96vw, 520px); max-height: max(calc(100cqh - 10rem), 150px); } svg.paper.round { width: min(80vw, 300px); }
+  .part { fill: #fff8ec; stroke: var(--ink); stroke-width: 3; } .part.on { fill: #ffd23f; } .part.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+  .crease.new { stroke-dasharray: 200; animation: crease .6s ease-out; } @keyframes crease { from { stroke-dashoffset: 200; } }
+  @media (prefers-reduced-motion: reduce) { .crease.new { animation: none; } }
+  .guide { stroke: var(--brand); stroke-width: 4; stroke-dasharray: 8 6; fill: none; }
+  svg.paper text { font-size: 26px; font-weight: 700; fill: var(--ink); }
+  .side { display: flex; flex-direction: column; align-items: center; gap: .4rem; } .picker, .picks { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; align-items: center; }
+  .picks button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+  .fracshow { margin: 0; font-size: 2rem; font-weight: 700; min-width: 3ch; text-align: center; }
+  .partlist { list-style: none; margin: 0; padding: 0; gap: .3rem; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); }
+  .papertext { margin: 0; font-size: 1rem; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
