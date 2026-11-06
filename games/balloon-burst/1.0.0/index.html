@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Balloon Burst</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* Balloons float up and wait (no timer anywhere); each number is underlined, so it reads the same way up on the balloon. */
+  svg.sky { width: min(96cqw, 640px); max-height: max(calc(100cqh - 3rem), 200px); }
+  .balloon { cursor: pointer; } .balloon.gone { visibility: hidden; }
+  .bob { transform-box: fill-box; transform-origin: center; animation: rise 1.2s ease-out both, bob 3s ease-in-out 1.2s infinite alternate; animation-delay: var(--d), calc(var(--d) + 1.2s); }
+  .wobble .bob { animation: wobble .7s ease-in-out 2; }
+  .balloon .skin { stroke: var(--ink); stroke-width: 3; } .balloon .string { fill: none; stroke: var(--ink); stroke-width: 2; }
+  .balloon.pulse .skin { stroke: var(--sun); stroke-width: 7; }
+  svg text { font-weight: 800; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+  .numline { stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+  .burst circle { fill: var(--sun); stroke: var(--ink); stroke-width: 1.5; animation: burst .6s ease-out forwards; }
+  @keyframes rise { from { transform: translateY(240px); } }
+  @keyframes bob { to { transform: translateY(-10px); } }
+  @keyframes wobble { 25% { transform: rotate(-9deg); } 75% { transform: rotate(9deg); } }
+  @keyframes burst { from { transform: translate(0, 0) scale(.4); opacity: 1; } to { transform: translate(var(--x), var(--y)) scale(1); opacity: 0; } }
+  /* On a miss: the balloons left, lined up over a number path. */
+  svg.lineup { width: min(96cqw, 640px); } .lineup .axis { stroke: var(--ink); stroke-width: 4; } .lineup .stick { stroke: var(--ink); stroke-width: 2; }
+  .lineup circle { fill: #fff; stroke: var(--ink); stroke-width: 3; } .lineup .first circle { fill: var(--sun); } .lineup .picked circle { stroke: var(--warn); stroke-width: 6; }
+  .balloonlist { list-style: none; margin: 0; padding: 0; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .5rem; width: min(96cqw, 640px); }
+  .balloonlist button { width: 100%; background: #fff; color: var(--ink); border: 3px solid var(--ink); } .balloonlist button.pulse { background: var(--sun-soft); }
+  .say { margin: 0; font-weight: 700; text-align: center; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

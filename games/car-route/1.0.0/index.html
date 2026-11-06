@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Car Route</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* A town seen from above, and a junction seen from the car's own seat. Left and right are always the car's. */
+  svg.map { width: min(92cqw, 440px); max-height: max(calc(100cqh - 2.5rem), 230px); }
+  .world { transform-box: view-box; transform-origin: 50% 50%; transition: transform .8s ease-in-out; }
+  .grass { fill: #bfe6a8; }
+  .roadline { stroke: var(--ink); stroke-linecap: round; } .roadtop { stroke: #8a8fa8; stroke-linecap: round; }
+  .barrier { fill: #fff; stroke: #b3261e; stroke-width: 6; }
+  .badge circle { fill: #fff; stroke: var(--brand); stroke-width: 4; } .badge text { fill: var(--brand); }
+  .badge.set circle { fill: var(--brand); } .badge.set text { fill: #fff; } .badge.pulse circle, .starmark.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+  .badge.here circle { stroke: var(--sun); stroke-width: 7; }
+  svg text { font-weight: 800; text-anchor: middle; dominant-baseline: central; }
+  .car { transition: transform .3s linear; } .car .body { fill: #c2185b; stroke: var(--ink); stroke-width: 3; } .car .roof { fill: #fff; stroke: var(--ink); stroke-width: 2; }
+  .land, .starmark { stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: .4rem; max-width: 340px; }
+  svg.seat { width: min(60cqw, 156px, max(calc(100cqh - 215px), 100px)); }
+  @container (max-width: 840px) { svg.map { width: min(92cqw, max(calc(100cqh - 340px), 220px)); } } /* the junction panel under the town */
+  .chips svg.way { width: 1.4em; height: 1.4em; } .chips svg.way path { fill: currentColor; } .chips svg.way text { fill: currentColor; }
+  .seat .exit { cursor: pointer; } .seat .exit path.arrow { fill: #fff; stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+  .seat .exit.on path.arrow { fill: var(--sun); }
+  .chips { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: center; align-items: center; }
+  .chips button[aria-current="true"] { outline: 4px solid var(--sun); }
+  .plan { list-style: none; margin: 0; padding: 0; gap: .4rem; }
+  .plan li { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; } .plan .jname { font-weight: 800; min-width: 7ch; }
+  .plan button[aria-pressed="true"], .chips button.set { background: var(--brand); color: #fff; }
+  .ask { margin: 0; font-size: 1.1rem; font-weight: 700; text-align: center; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Drive. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
