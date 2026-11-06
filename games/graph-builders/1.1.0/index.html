@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Graph Builders</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* The graph: equal squares in columns, every column standing on one bold baseline (an honest graph: taller is more).
+     Six squares tall at every grade, so a square stays a 44 px tap on a laptop screen. */
+  svg.graph { height: clamp(240px, calc(100cqh - 2.5rem), 400px); width: auto; max-width: 96cqw; }
+  .cell { fill: #fff; stroke: #c9c2e8; stroke-width: 2; } .cell.on { fill: #fff1b8; stroke: var(--ink); } .cell.bar { fill: var(--brand); stroke: var(--ink); }
+  .cell.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+  .baseline { stroke: var(--ink); stroke-width: 6; stroke-linecap: round; }
+  svg text { font-size: 18px; font-weight: 700; fill: var(--ink); text-anchor: middle; }
+  svg.scene { width: min(92cqw, 340px); } svg.tally { width: min(92cqw, 300px); }
+  .tallymark { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: .5rem; max-width: 360px; }
+  .picker, .picks { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; align-items: center; }
+  .picks button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+  .ask { margin: 0; font-size: 1.15rem; font-weight: 700; text-align: center; }
+  /* Batch 3: two groups side by side; a cloth over each once the child picks (peek again lifts it). */
+  svg.spot { width: min(92cqw, 420px); max-height: max(calc(100cqh - 4.5rem), 150px); } .groupbox { fill: #e9f5dc; stroke: var(--ink); stroke-width: 3; } .groupbox.pulse { fill: var(--sun-soft); }
+  .clothrect { fill: #c9c2e8; stroke: var(--ink); stroke-width: 2; } text.cloth { font-size: 48px; }
+  .collist { gap: .3rem; } .found { margin: 0; font-size: 1rem; max-width: 34ch; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

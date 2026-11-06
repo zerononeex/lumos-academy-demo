@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bridge Builder</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* Line, counters and planks on one screen: the parts share the board's height (see the kit's layouts). */
+  svg.frame, svg.rack { width: auto; max-width: 100%; } /* the box keeps the drawing's shape, so the parts sit side by side */
+  svg.frame { height: clamp(150px, 45cqh, 180px); } svg.rack { height: clamp(56px, 18cqh, 80px); }
+  svg.jline { max-height: max(30cqh, 90px); }
+  .planker { flex-flow: row wrap; justify-content: center; align-items: center; max-width: 13rem; }
+  .planker:has(.stepper + .stepper) { max-width: 26rem; } /* tens and ones side by side, the buttons under them */
+  .manip .card { font-size: 1.3rem; max-width: 240px; }
+  /* Batch 3: number cards and blocks over the span (art drop-in B3-W1, B3-W2, B3-A1). Every card and block is a real button. */
+  .card.target { font-size: 1.6rem; font-weight: 800; }
+  .palette.cards, .palette.blocks { display: flex; flex-flow: row wrap; justify-content: center; align-items: flex-end; gap: .6rem; }
+  .numcard { min-width: 64px; min-height: 64px; font-size: 1.6rem; font-weight: 800; }
+  .numcard[aria-pressed="true"], .numblock[aria-pressed="true"] { background: #d8efe9; border-color: var(--calm); box-shadow: 0 0 0 3px var(--calm); }
+  .numblock { min-width: 56px; min-height: calc(48px + var(--h, 1) * 90px); display: flex; align-items: flex-start; justify-content: center;
+    font-size: 1.4rem; font-weight: 800; transition: transform .45s ease, opacity .45s ease; }
+  .numblock.aside { transform: translateY(18px); opacity: .55; } /* set down on the shelf, calmly; nothing breaks */
+  .spanfig { width: min(100%, 34rem); }
+  .span { position: relative; display: flex; height: 48px; border-bottom: 6px solid #6b4f2a; }
+  .span::after { content: ""; position: absolute; left: var(--goal, 100%); top: -8px; bottom: -6px; border-left: 4px dashed #2f6fb3; } /* the far side */
+  .span .plank { display: grid; place-items: center; min-width: 2rem; background: #d9a85b; border: 2px solid #6b4f2a; border-radius: 6px; font-weight: 800; }
+  .span .gap { background: repeating-linear-gradient(90deg, transparent 0 8px, #bcdcf5 8px 16px); }
+  @media (max-width: 640px) { /* the card beside the counters */
+    .numcard { min-width: 48px; min-height: 48px; font-size: 1.2rem; } .numblock { min-width: 46px; min-height: calc(44px + var(--h, 1) * 60px); font-size: 1.1rem; }
+    .manip .card { font-size: 1rem; max-width: 180px; } .tray { max-width: 180px; } svg.frame { height: 110px; } svg.rack { height: 36px; }
+  }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
