@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Groups &amp; Arrays Orchard</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* The orchard: a field of squares, trees planted from the left of each row; rows go across, columns go down. */
+  /* Beside its controls where there is room, so a square never drops below a 44 px tap (6 rows in at least 300 px). */
+  svg.orchard { width: min(92vw, 420px); max-height: max(calc(100cqh - 3.5rem), 300px); }
+  @container (max-width: 960px) { svg.orchard { max-height: max(calc(100cqh - 21rem), 300px); } } /* stacked above them */
+  .plot { fill: #f3e2c0; stroke: #b08a52; stroke-width: 2; } .plot.mark { fill: #ffe9a8; }
+  .crown.counted { fill: #ffd23f; stroke: var(--ink); stroke-width: 2.5; } /* a counted tree lights up behind its picture */
+  .ghost { fill: none; stroke: var(--brand); stroke-width: 4; stroke-dasharray: 8 6; }
+  .handle rect { fill: #fff; stroke: var(--brand); stroke-width: 3; } .handle path { fill: none; stroke: var(--brand); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .band { fill: var(--brand); fill-opacity: .18; } .band.pulse { animation: pulse 1s ease-in-out infinite alternate; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: .4rem; } .picker { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; align-items: center; }
+  .ways { display: grid; grid-template-columns: auto auto; gap: .4rem; justify-items: end; }
+  @container (max-width: 560px) { .ways { grid-template-columns: auto; } } /* a phone: one stepper a line */
+  .rowlist { gap: .3rem; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+  .orchtext { margin: 0; font-size: 1rem; } svg.orchard .count { font-size: 26px; font-weight: 700; fill: var(--ink); }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt with icon and replay, the manipulatives (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
