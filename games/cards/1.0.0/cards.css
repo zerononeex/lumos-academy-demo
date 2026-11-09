@@ -1,0 +1,42 @@
+/* Lumos picture cards 1.0.0 (with kit 1.6.0's kit.css, loaded before this). Big picture cards with the house navy
+   outline; a picked card lifts and glows sun-gold; a card that needs another look wobbles once, never a red cross.
+   The cards size to the board (#area is a size container) and never below a comfortable tap. */
+.cardboard { gap: .5rem; width: 100%; }
+.cards, .slots, .bins { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; align-items: flex-start; }
+svg.pcard { width: clamp(56px, min(17cqw, 22cqh), 150px); height: auto; cursor: pointer; transition: transform .15s ease-out; overflow: visible; }
+svg.pcard .bg { fill: #fff; stroke: var(--ink); stroke-width: 4; }
+svg.pcard .word { font-size: 15px; font-weight: 800; text-anchor: middle; fill: var(--ink); }
+svg.pcard .glyph { font-weight: 800; text-anchor: middle; dominant-baseline: central; font-family: system-ui, sans-serif; }
+svg.pcard .ink { stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+svg.pcard.on, svg.pcard.held { transform: translateY(-6px) scale(1.04); }
+svg.pcard.on .bg, svg.pcard.held .bg { fill: var(--sun-soft); stroke: var(--sun); stroke-width: 7; }
+svg.pcard.out { opacity: .25; pointer-events: none; }
+svg.pcard.empty { cursor: default; } svg.pcard.empty .bg { fill: rgba(255,255,255,.6); stroke-dasharray: 8 6; }
+svg.pcard.empty .word { font-size: 40px; fill: #8a8fa8; }
+.slots svg.pcard { width: clamp(56px, min(13cqw, 18cqh), 120px); }
+svg.pcard.placed .bg { fill: var(--leaf-soft); }
+svg.pcard.small { width: 52px; }
+svg.thumb { width: 40px; height: 40px; flex: none; pointer-events: none; }
+svg.pcard.nope { animation: wobble .5s ease-in-out 2; }
+svg.pcard.hint .bg { stroke: var(--sun); stroke-width: 8; animation: pulse .7s ease-in-out infinite alternate; }
+svg.pcard.yay { animation: hop .6s ease-out; }
+@keyframes wobble { 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+@keyframes hop { 40% { transform: translateY(-14px) scale(1.08); } }
+.bin { min-width: clamp(120px, 26cqw, 220px); min-height: 110px; padding: .4rem; border: 4px dashed var(--ink); border-radius: 22px; background: rgba(255,255,255,.8); cursor: pointer; display: flex; flex-direction: column; gap: .3rem; align-items: center; }
+.binhead { display: flex; align-items: center; gap: .3rem; font-weight: 800; font-size: 1.1rem; pointer-events: none; }
+.inbin { display: flex; flex-wrap: wrap; gap: .25rem; justify-content: center; }
+/* the buttons twin */
+.twin, .steps { width: 100%; }
+.twin { gap: .5rem; justify-content: center; grid-template-columns: repeat(auto-fit, minmax(150px, max-content)); }
+.twin.sort { grid-template-columns: 1fr; }
+.pickbtn { display: inline-flex; align-items: center; gap: .4rem; }
+.pickbtn[aria-pressed="true"], .sortrow button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+.sortrow { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.rowname { display: inline-flex; align-items: center; gap: .3rem; font-weight: 800; min-width: 9ch; }
+.steps { list-style: none; margin: 0; padding: 0; gap: .3rem; grid-template-columns: repeat(auto-fit, minmax(120px, max-content)); justify-content: center; }
+/* a game's scene above the cards */
+.scene { display: flex; justify-content: center; align-items: center; flex-basis: 100%; }
+.scene > svg { width: min(92cqw, 520px); max-height: clamp(90px, 24cqh, 220px); height: auto; }
+.scene > svg.show { width: auto; height: clamp(80px, 20cqh, 160px); } /* a word card on its own */
+.scene .ink { stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+@media (prefers-reduced-motion: reduce) { svg.pcard, svg.pcard.nope, svg.pcard.yay, svg.pcard.hint .bg { animation: none; transition: none; } }

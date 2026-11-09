@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Colour Mixing</title>
+<link rel="stylesheet" href="../../kit/1.6.0/kit.css">
+<link rel="stylesheet" href="../../cards/1.0.0/cards.css">
+<style>
+  body { background-image: url(../../scenes/colour-mixing.webp) !important; } /* its own scene (GA-071) */
+  .mix .blob { stroke: var(--ink); stroke-width: 5; transition: fill .6s ease-in-out; }
+  .mix text { font-weight: 800; text-anchor: middle; font-size: 22px; fill: var(--ink); }
+  .mix.stir .bowl { animation: stir .9s ease-in-out 2; transform-box: fill-box; transform-origin: 50% 80%; }
+  @keyframes stir { 30% { transform: rotate(-5deg); } 70% { transform: rotate(5deg); } }
+</style>
+</head>
+<body>
+  <script src="../../kit/1.6.0/kit.js"></script>
+  <script src="../../cards/1.0.0/cards.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
