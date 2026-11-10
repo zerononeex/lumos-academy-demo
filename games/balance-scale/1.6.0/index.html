@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Balance Scale</title>
+<link rel="stylesheet" href="../../kit/1.5.0/kit.css">
+<style>
+  /* The scale: the beam swings toward the side with more value (the tilt is the feedback) with a short spring, and glows
+     when level; held still until Check when the child predicts. Tiles are sized by value as well as numbered; a balloon
+     lifts its side (take away). The child's pan has a sun-coloured tray; the tray of tiles to tap sits right under it. */
+  svg.scale { width: min(100%, 640px); max-height: max(calc(100cqh - 11.5rem), 170px); }
+  .beam, .pan { transition: transform .8s cubic-bezier(.34, 1.45, .64, 1); }
+  /* 1.6.0: the Treasure Island look (art-intake/treasure-island-weigh-in, 02): a gold rig with a navy outline; level
+     glows green. The pans hold pictures (game.js) with the number stamped on each, white-edged so it reads on any art. */
+  .beam rect, .post, .hub { fill: #f2c230; stroke: var(--ink); stroke-width: 3; } .hub { fill: #ffd95a; }
+  .level .beam rect, .level .post { fill: #ffe27a; filter: drop-shadow(0 0 7px var(--leaf)); }
+  .pan line { stroke: #c9961a; stroke-width: 3.5; stroke-dasharray: 6 3; } .tray { fill: #f2c230; stroke: var(--ink); stroke-width: 2.5; }
+  .pan.mine .tray { fill: var(--sun); filter: drop-shadow(0 0 5px #fff3b0); }
+  .pan.pulse .tray { fill: var(--gold); animation: pulse 1s ease-in-out infinite alternate; }
+  .tile rect { fill: #e9c89a; stroke: var(--ink); stroke-width: 2.5; rx: 6px; }
+  .tile.drop { animation: drop .35s cubic-bezier(.34, 1.4, .64, 1); }
+  @keyframes drop { from { transform: translateY(-60px); opacity: 0; } }
+  .tile text, .balloon text { font-size: 22px; font-weight: 800; fill: var(--ink); paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+  .total { font-size: 28px; font-weight: 800; fill: var(--ink); paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+  .tile.box text { fill: var(--brand); }
+  .balloon line { stroke: var(--ink); stroke-width: 2; }
+  .balloon.box circle { fill: none; stroke: var(--brand); stroke-width: 3; stroke-dasharray: 8 5; }
+  .prop { fill: #9a6334; stroke: var(--ink); stroke-width: 2; }
+  /* The captain beside the scale (07), his pose set by game.js: decorative, never a tap target, only where the board has
+     room left of the scale; the buttons view and narrow boards leave him out. */
+  .manip.wide { position: relative; }
+  .manip.wide[data-pose]::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: min(170px, calc(50cqw - 330px));
+    background-position: bottom center; background-size: contain; background-repeat: no-repeat; pointer-events: none; display: none; }
+  @container (min-width: 880px) { body:not(.buttons) .manip.wide[data-pose]::before { display: block; } }
+  [data-pose="wave"]::before { background-image: url(../../art/balance-scale/captain-wave.webp); }
+  [data-pose="think"]::before { background-image: url(../../art/balance-scale/captain-think.webp); }
+  [data-pose="point"]::before { background-image: url(../../art/balance-scale/captain-point.webp); }
+  [data-pose="cheer"]::before { background-image: url(../../art/balance-scale/captain-cheer.webp); }
+  /* Pip in his bandana (07) on the start and end cards: decorative, in the card's corner. */
+  #intro, #end { position: relative; }
+  #intro::after, #end::after { content: ""; position: absolute; right: -.8rem; top: -1.4rem; width: 92px; height: 103px; pointer-events: none;
+    background: url(../../art/balance-scale/pip-bandana.webp) center / contain no-repeat; }
+  @media (max-width: 640px) { #intro::after, #end::after { width: 70px; height: 78px; right: -.4rem; top: -1rem; } }
+  /* The furniture after 09: Check green, Undo orange, the speaker blue, each in a rope ring; wooden steppers. */
+  #check { background: #4fae2a; box-shadow: 0 0 0 4px #e0c58f, 0 0 0 6px var(--ink), 0 6px 0 6px #2f6b18; }
+  #undo { background: #f08a24; color: #fff; border-color: #8a4b12; box-shadow: 0 0 0 3px #e0c58f, 0 5px 0 3px #8a4b12; }
+  #replay { background: #2f8be0; color: #fff; border-color: #e0c58f; border-radius: 50%; box-shadow: 0 0 0 2px var(--ink), 0 4px 0 2px #1d5a96; }
+  .loads .stepper button.secondary { background: radial-gradient(circle at 40% 35%, #c98a4b, #8a5426); color: #fff; border: 3px solid #e0c58f;
+    border-radius: 50%; box-shadow: 0 0 0 2px var(--ink), 0 4px 0 2px #5b3412; }
+  .tiletray { padding: 0 1.4rem; background: url(../../art/balance-scale/tray.webp) center / 100% 100% no-repeat; } /* no height added: the board still fits */
+  .scaletext { margin: 0; font-size: 1rem; }
+  .eq { margin: 0; font-size: 1.8rem; font-weight: 800; text-align: center; flex-basis: 100%; }
+  .eq .equals { color: var(--calm); padding: 0 .3em; } .eq small { display: block; font-size: 1rem; color: var(--calm); }
+  .loads { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; flex-basis: 100%; }
+  /* The tray: each tile value is a big tile to tap (one more on the pan), its count, and a small − to take one off. */
+  .tiletray .stepper { position: relative; display: grid; grid-template: "more" auto "less" auto / auto; justify-items: center; gap: .35rem; }
+  .tiletray .steplabel { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .tiletray .more { grid-area: more; padding: 0; width: auto; min-width: 0; background: none; box-shadow: none; }
+  .tiletray .more:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
+  .tiletray .stepval { position: absolute; top: -10px; right: -10px; min-width: 2.2em; padding: 0 .3em; border-radius: 999px; background: var(--card);
+    border: 2px solid var(--ink); font-size: 1rem; line-height: 1.6; } .tiletray .stepval::before { content: "×"; }
+  .tiletray .stepper button.secondary { grid-area: less; min-height: 44px; min-width: 44px; width: 44px; font-size: 1.4rem; }
+  .traytile { display: grid; place-items: center; width: 64px; height: 64px; color: var(--ink); font-size: 1.6rem; font-weight: 800;
+    background: center / contain no-repeat; text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff; filter: drop-shadow(0 4px 0 rgba(27,31,59,.35)); }
+  .traytile.v1 { background-image: url(../../art/balance-scale/coin.webp); } .traytile.v2 { background-image: url(../../art/balance-scale/emerald.webp); }
+  .traytile.v5 { background-image: url(../../art/balance-scale/pearls.webp); } .traytile.v10 { background-image: url(../../art/balance-scale/gold-bar.webp); }
+  .traytile.v2 { width: 70px; } .traytile.v5 { width: 78px; } .traytile.v10 { width: 88px; }
+  @media (max-width: 640px) { .eq { font-size: 1.4rem; } .loads { gap: .4rem; } .traytile { width: 58px !important; height: 58px; } }
+  /* Batch 3: the weighings, each a small scale with its own "Weigh again" (free); a level one glows calm. */
+  .weighs { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+  .weigh { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+  svg.mini { width: min(40cqw, 200px); overflow: visible; } svg.mini .beam rect, svg.mini .post { fill: #7f97bf; } /* the mini scales of 08: slate blue */
+  svg.mini.pulse .beam rect { fill: var(--gold); } svg.mini.level .beam rect { fill: var(--leaf); }
+  .picks { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; } .picks button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+  .ask { margin: 0; font-size: 1.15rem; font-weight: 700; text-align: center; flex-basis: 100%; }
+</style>
+</head>
+<body>
+  <!-- The kit builds the screen: prompt and replay, the scale and its tray (picture and buttons twins), Undo, Check. -->
+  <script src="../../kit/1.5.0/kit.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
