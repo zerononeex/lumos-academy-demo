@@ -251,7 +251,7 @@
 
   K.run({
     goal: "Find out how long things are.",
-    title: "Measure the Room",
+    title: "Detective's Dimension Gauge",
     closure: "All done! You measured lots of things today.",
     stages: {
       measure_compare: { name: "Shortest to longest" }, measure_units: { name: "Units end to end" },

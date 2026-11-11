@@ -138,7 +138,7 @@
 
   K.run({
     goal: "Jump along the line to find the answer.",
-    title: "Open Line Jumps",
+    title: "Rainbow Leap",
     closure: "All done! You made great jumps today.",
     stages: {
       line_open: { name: "Open line" }, line_landmarks: { name: "Landmarks" },

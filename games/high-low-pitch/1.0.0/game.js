@@ -7,7 +7,7 @@
   const C = window.LumosCards, K = window.LumosKit;
   const PITCH = [262, 294, 330, 349, 392, 440, 494, 523];
   C.run({
-    title: "High and Low",
+    title: "Echo Canyon",
     goal: "Listen for the higher note.",
     closure: "All done! Your ears found lots of high notes today.",
     stages: { "pitch.higher": "Which is higher?", "pitch.order": "Low to high" },

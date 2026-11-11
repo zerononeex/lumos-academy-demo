@@ -140,7 +140,7 @@
   }
 
   K.run({
-    title: "Car Route",
+    title: "The Downtown Grand Prix",
     goal: "Plan the turns, then drive.",
     closure: "All done! You planned lots of routes today.",
     checkLabel: "Drive",

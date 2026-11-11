@@ -155,7 +155,7 @@
   }
 
   K.run({
-    title: "Number Path",
+    title: "The Express Railway",
     goal: (item) => item.stage === "estimate" ? "Find where each number goes on the line." : "Drive the train. Count every stop.",
     closure: "All done! You did great thinking on the number path today.",
     stages: {

@@ -12,7 +12,7 @@
     hard: (g) => C.shape(g, "M24 26h52v52H24z", "#9a9aa6"),
   };
   C.run({
-    title: "Texture Sort",
+    title: "Tactile Treasure Trove",
     goal: "Sort by how things feel.",
     closure: "All done! You felt lots of textures today.",
     stages: { "texture.sort": "Rough or smooth?", "texture.both": "Two feel words" },

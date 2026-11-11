@@ -159,7 +159,7 @@
 
   K.run({
     goal: "Fill the frame to show the number.",
-    title: "Ten-Frame Workshop",
+    title: "Dot-Bot's Toy Shop",
     closure: "All done! You did great thinking with the ten-frame today.",
     stages: {
       quick_look: { name: "Quick Look" }, build_it: { name: "Build It" },

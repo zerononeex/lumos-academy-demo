@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards, { h } = window.LumosKit;
   C.run({
-    title: "Habitat Match",
+    title: "Home Sweet Wild",
     goal: "Find each animal's home.",
     closure: "All done! Every animal found its home today.",
     stages: { "habitat.match": "Where does it live?", "habitat.odd": "Who doesn't belong?", "habitat.why": "What gives it away?" },

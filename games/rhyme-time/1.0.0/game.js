@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards, { h } = window.LumosKit;
   C.run({
-    title: "Rhyme Time",
+    title: "Wizard's Rhyme Hat",
     goal: "Find the words that rhyme.",
     closure: "All done! You found lots of rhymes today.",
     stages: { "rhymetime.rhyme": "Which one rhymes?", "rhymetime.family": "The whole family", "rhymetime.odd": "Which does not rhyme?" },

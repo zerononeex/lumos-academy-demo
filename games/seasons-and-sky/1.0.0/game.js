@@ -19,7 +19,7 @@
     summer: (g) => C.circle(g, 50, 50, 24, "#ffd23f"), fall: (g) => C.shape(g, "M20 70q0-40 50-46-4 46-50 46z", "#ff8c1a"),
   };
   C.run({
-    title: "Seasons and Sky",
+    title: "Weather Wizard's Tower",
     goal: "Find the season, and follow the sky.",
     closure: "All done! You read lots of season clues today.",
     stages: { "seasons.sort": "Sort by season", "seasons.clues": "Two clues", "seasons.sky": "Across the sky" },

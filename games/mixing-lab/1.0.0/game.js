@@ -12,7 +12,7 @@
     return s;
   };
   C.run({
-    title: "Mixing Lab",
+    title: "Potion Master's Brew",
     goal: "Predict, then mix and see.",
     closure: "All done! You tested lots of mixes today.",
     stages: { "mixlab.predict": "What will happen?", "mixlab.more": "More and more?", "mixlab.three": "Three things" },

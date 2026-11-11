@@ -17,7 +17,7 @@
     "a plant with fruit": bean(5),
   };
   C.run({
-    title: "Just Gardening",
+    title: "Sprout's Secret Garden",
     goal: "Grow a plant from seed to fruit.",
     closure: "All done! Your garden grew well today.",
     stages: { "garden.grow": "Seed to fruit", "garden.care": "What does it need?", "garden.needs": "What plants need" },

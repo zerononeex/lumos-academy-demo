@@ -21,7 +21,7 @@
     hands(g, 50, 53, 25)(minutes(id));
   } });
   C.run({
-    title: "Tick-Tock Turn",
+    title: "Clockwork Kingdom",
     goal: "Move the hands, then pick the new time.",
     closure: "All done! You moved the clock hands lots of times today.",
     stages: { "ticktock.forward": "Forward", "ticktock.back": "Back", "ticktock.big": "Big jumps" },

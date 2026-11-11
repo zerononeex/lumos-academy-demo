@@ -17,7 +17,7 @@
     return C.word(id);
   };
   C.run({
-    title: "Bubble Lab",
+    title: "The Fizz Factory",
     goal: "Blow a bubble. What shape is it?",
     closure: "All done! You blew lots of bubbles today.",
     stages: { "bubbles.shape": "What shape?", "bubbles.size": "Big and small" },

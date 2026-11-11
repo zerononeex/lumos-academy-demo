@@ -7,7 +7,7 @@
   "use strict";
   const C = window.LumosCards, { h } = window.LumosKit;
   C.run({
-    title: "Animal Tracks",
+    title: "The Jungle Tracker",
     goal: "Match the tracks to the animals.",
     closure: "All done! You followed lots of tracks today.",
     stages: { "tracks.match": "Whose track?", "tracks.size": "Smallest to biggest", "tracks.toes": "Count the toes" },

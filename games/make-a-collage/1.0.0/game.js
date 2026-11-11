@@ -19,7 +19,7 @@
   // Where each part sits in the model outline (x, y, size), in the same order as the parts.
   const LAYOUT = { 0: [[60, 4, 80], [60, 64, 80], [86, 98, 44]], 1: [[70, 0, 70], [40, 74, 120], [118, 2, 36]], 2: [[50, 0, 100], [50, 76, 70]], 3: [[70, 0, 60], [70, 40, 60], [52, 96, 96]] };
   C.run({
-    title: "Make a Collage",
+    title: "Dreamhouse Workshop",
     goal: "Rebuild the picture with paper pieces.",
     closure: "All done! You made lots of pictures today.",
     checkLabel: "Glue it",

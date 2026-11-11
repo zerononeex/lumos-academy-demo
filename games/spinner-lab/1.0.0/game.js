@@ -135,7 +135,7 @@
   }
 
   K.run({
-    title: "Spinner Lab",
+    title: "Wheel of Fortune Physics",
     goal: "How likely is it?",
     closure: "All done! You tested lots of spinners today.",
     stages: { spin_words: { name: "How likely?" }, spin_predict: { name: "Predict, then spin 10 times" } },

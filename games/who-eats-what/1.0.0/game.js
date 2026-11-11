@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards, { h } = window.LumosKit;
   C.run({
-    title: "Who Eats What",
+    title: "Forest Feast Cafe",
     goal: "Find each animal's food, and the flower helpers.",
     closure: "All done! Everyone had a good meal today.",
     stages: { "food.food": "What does it eat?", "food.helpers": "Flower helpers" },

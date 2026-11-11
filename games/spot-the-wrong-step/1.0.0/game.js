@@ -5,7 +5,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Spot the Wrong Step",
+    title: "Detective's Blunder Hunt",
     goal: "Find the wrong step, and fix it.",
     closure: "All done! You fixed lots of programs today.",
     checkLabel: "Run",

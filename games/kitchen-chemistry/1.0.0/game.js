@@ -5,7 +5,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Kitchen Chemistry",
+    title: "Chef Gizmo's Brews",
     goal: "Fizz, melt and freeze: what changes?",
     closure: "All done! You tested lots of kitchen changes today.",
     stages: { "kitchen.fizz": "Which one fizzes?", "kitchen.ice": "Ice in warm water", "kitchen.order": "Freeze and melt", "kitchen.which": "Which is melting?" },

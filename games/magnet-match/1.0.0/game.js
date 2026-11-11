@@ -7,7 +7,7 @@
   const C = window.LumosCards, K = window.LumosKit, { svg, h, wait } = K;
   const base = (id) => id.replace(/ \(.*\)$/, "");
   C.run({
-    title: "Magnet Match",
+    title: "Magnetic Maze",
     goal: "Guess what the magnet picks up, then test.",
     closure: "All done! You tested lots of things with the magnet today.",
     checkLabel: "Test it",

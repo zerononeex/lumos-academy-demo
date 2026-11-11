@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Life Cycle Order",
+    title: "Time-Travel Butterfly",
     goal: "Put each life in order.",
     closure: "All done! You followed lots of life cycles today.",
     stages: { "lifecycle.order": "Put it in order", "lifecycle.missing": "The missing stage" },

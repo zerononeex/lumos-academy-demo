@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Dissolve It",
+    title: "Magic Melting Pot",
     goal: "Stir it in. Is it still there?",
     closure: "All done! You stirred lots of things today.",
     stages: { "dissolve.sort": "Does it dissolve?", "dissolve.where": "Where did it go?", "dissolve.warm": "Warm or cold?" },

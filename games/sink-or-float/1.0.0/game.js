@@ -7,7 +7,7 @@
   "use strict";
   const C = window.LumosCards, K = window.LumosKit, { svg, h, wait } = K;
   C.run({
-    title: "Sink or Float",
+    title: "Pirate Shipwreck Salvage",
     goal: "Guess, then test it in the water.",
     closure: "All done! You tested lots of things today.",
     checkLabel: "Test it",

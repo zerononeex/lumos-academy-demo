@@ -8,7 +8,7 @@
   const POT = { red: "01", yellow: "02", blue: "03", white: "04" };
   const HEX = { red: "#e5383b", yellow: "#ffd23f", blue: "#2f6fde", white: "#ffffff" };
   C.run({
-    title: "Colour Lab",
+    title: "Alchemist's Tint Shop",
     goal: "Follow the colour recipe.",
     closure: "All done! You measured lots of colours today.",
     checkLabel: "Mix",

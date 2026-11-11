@@ -8,7 +8,7 @@
   "use strict";
   const C = window.LumosCards, K = window.LumosKit, { svg, h } = K;
   C.run({
-    title: "Word Devices",
+    title: "The Lexicon Machine",
     goal: "Find words that rhyme, or start with the same sound.",
     closure: "All done! You listened to lots of words today.",
     stages: { "worddev.rhyme": "Find the rhyme", "worddev.start": "Same first sound", "worddev.rhyme_sort": "Rhymes or not?", "worddev.opposite": "Opposites" },

@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards, { svg, h } = window.LumosKit;
   C.run({
-    title: "Weather Watch",
+    title: "Sky Gazers' Post",
     goal: "Read the sky, and get Pip ready.",
     closure: "All done! You watched the weather today.",
     stages: { "weather.name": "What's the weather?", "weather.gear": "Dress Pip", "weather.guess": "What might happen?" },

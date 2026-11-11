@@ -15,7 +15,7 @@
     g.append(svg("path", { d: `M${x0 + cell * (half ? w : w / 2)} ${y0 - 4}v${cell * rows.length + 8}`, stroke: "#7a2e9e", "stroke-width": 3, "stroke-dasharray": "5 4" }));
   }
   C.run({
-    title: "Symmetry Painting",
+    title: "Mirror Masterpiece",
     goal: "Find the true mirror picture.",
     closure: "All done! You found lots of mirror pictures today.",
     stages: { "symmetry.mirror": "Find the mirror" },

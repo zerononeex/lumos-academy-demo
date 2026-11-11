@@ -10,7 +10,7 @@
     curve: (g) => C.shape(g, "M10 40h40q30 0 30 30v20H70V70q0-20-20-20H10z", "#3c9cff"), "slope up": (g) => C.shape(g, "M10 70L90 30v10L10 80z", "#ff6b8b"),
   };
   C.run({
-    title: "Marble Run",
+    title: "Gravity Rollercoaster",
     goal: "Plan the track to the cup.",
     closure: "All done! Your marble runs reached the cup.",
     checkLabel: "Roll it",

@@ -15,7 +15,7 @@
     winds: (g) => C.shape(g, "M10 36h50q14 0 14-12t-12-10M10 56h66q14 0 14 12t-12 10", "none", { "stroke-width": 7 }),
   };
   C.run({
-    title: "Instrument Families",
+    title: "The Orchestra Bazaar",
     goal: "Sort instruments by how they make sound.",
     closure: "All done! The whole band is in its families.",
     stages: { "instruments.sort": "Sort the instruments", "instruments.how": "How is it played?" },

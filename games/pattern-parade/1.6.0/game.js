@@ -308,7 +308,7 @@
 
   K.run({
     goal: "Find the part that repeats, then keep it going.",
-    title: "Pattern Parade",
+    title: "Cosmic Conga Line",
     closure: "All done! You found great patterns today.",
     stages: {
       pattern_core: { name: "Find the core" }, pattern_extend: { name: "Keep it going" },

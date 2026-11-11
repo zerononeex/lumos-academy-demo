@@ -8,7 +8,7 @@
   const away = (g) => C.shape(g, "M20 84h44l-8-8m8 8l-8 8", "none", { "stroke-width": 5 });
   const toward = (g) => C.shape(g, "M64 84H20l8-8m-8 8l8 8", "none", { "stroke-width": 5 });
   C.run({
-    title: "Push or Pull",
+    title: "The Mighty Movers",
     goal: "Is it a push or a pull?",
     closure: "All done! You sorted lots of pushes and pulls today.",
     stages: { "pushpull.sort": "Push or pull?", "pushpull.two": "Two steps" },

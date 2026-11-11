@@ -170,7 +170,7 @@
 
   K.run({
     goal: "Build numbers with tens and ones.",
-    title: "Build-a-Number",
+    title: "Digit Depot",
     closure: "All done! You built great numbers today.",
     stages: { place_build: { name: "Build it" }, place_read: { name: "Read it" }, place_trade: { name: "Trade it" } },
     praise: (item) => `Yes! ${item.n}.`,

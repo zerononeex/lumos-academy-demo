@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Five Senses",
+    title: "The Sensory Mask",
     goal: "Which sense found it out?",
     closure: "All done! You used all your senses today.",
     stages: { "senses.match": "Which sense?", "senses.two": "Two senses at once" },

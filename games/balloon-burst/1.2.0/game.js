@@ -112,7 +112,7 @@
   }
 
   K.run({
-    title: "Balloon Burst",
+    title: "Sky-High Cloud Safari",
     goal: "Pop the numbers from smallest to largest.",
     closure: "All done! You put lots of numbers in order today.",
     stages: { balloon_next: { name: "What comes next?" }, balloon_mixed: { name: "Smallest to largest" }, balloon_big: { name: "Big numbers in order" },

@@ -21,7 +21,7 @@
     return `rgb(${hex(PAINT[a]).map((v, k) => Math.round((v + hex(PAINT[b])[k]) / 2)).join(",")})`;
   }
   C.run({
-    title: "Colour Mixing",
+    title: "Palette of Wonders",
     goal: "Mix two paints to make the colour.",
     closure: "All done! You mixed lots of colours today.",
     checkLabel: "Mix",

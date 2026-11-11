@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Sound Sort",
+    title: "Audio Vault",
     goal: "Sort pictures by their first sound.",
     closure: "All done! You sorted lots of sounds today.",
     stages: { "soundsort.sort": "Sort by first sound" },

@@ -7,7 +7,7 @@
   const C = window.LumosCards, K = window.LumosKit, { svg, h } = K;
   const clap = (after = 0) => K.tone(196, 120, 0.3, "square", after);
   C.run({
-    title: "Rhythm Echo",
+    title: "Drumbeat Island",
     goal: "Tap the rhythm back.",
     closure: "All done! You echoed lots of rhythms today.",
     checkLabel: "Done",

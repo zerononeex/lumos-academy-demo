@@ -199,7 +199,7 @@
 
   K.run({
     goal: "Follow the clues across the chart.",
-    title: "Hundred Chart Trek",
+    title: "The Grid Galaxy",
     closure: "All done! You found your way around the chart today.",
     stages: {
       chart_clues: { name: "Clue trek" }, chart_pattern: { name: "Trails" }, chart_missing: { name: "Covered numbers" },

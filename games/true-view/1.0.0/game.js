@@ -33,7 +33,7 @@
       draw: (g) => n.forEach((t, i) => { for (let k = 0; k < t; k++) C.shape(g, `M${17 + i * 22} ${86 - (k + 1) * 22}h22v22h-22z`, "#ffd23f"); }) };
   }
   C.run({
-    title: "True View",
+    title: "3D Dimension Studio",
     goal: "Pick how it looks from the arrow.",
     closure: "All done! You saw lots of buildings from every side today.",
     stages: { "trueview.look": "From the arrow", "trueview.dice": "Dice rules" },

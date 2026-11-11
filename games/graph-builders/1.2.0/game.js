@@ -200,7 +200,7 @@
   }
 
   K.run({
-    title: "Graph Builders",
+    title: "Data Skyscraper",
     goal: "Build a graph of what we found.",
     closure: "All done! You built honest graphs today.",
     stages: { graph_sort: { name: "Sort and graph" }, graph_more: { name: "How many more?" }, graph_picto: { name: "Picture graph" }, graph_scaled: { name: "Each square is 2" },

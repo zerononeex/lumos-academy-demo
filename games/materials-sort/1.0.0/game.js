@@ -7,7 +7,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Materials Sort",
+    title: "The Scavenger's Sorting Bin",
     goal: "What is it made of?",
     closure: "All done! You sorted lots of materials today.",
     stages: { "materials.sort": "What is it made of?", "materials.job": "Best for the job" },

@@ -7,7 +7,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Staged Coding",
+    title: "Coder's Quest",
     goal: "Plan the star's path, then run it.",
     closure: "All done! Your star followed every plan today.",
     checkLabel: "Run",

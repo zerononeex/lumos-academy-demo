@@ -15,7 +15,7 @@
     C.circle(g, 16, top - (p.heavy ? 10 : 6), p.heavy ? 10 : 6, p.heavy ? "#4a4f6b" : "#ffd23f");
   };
   C.run({
-    title: "Ramp Lab",
+    title: "Daredevil Skatepark",
     goal: "Test how far the ball rolls.",
     closure: "All done! You tested lots of ramps today.",
     checkLabel: "Test it",

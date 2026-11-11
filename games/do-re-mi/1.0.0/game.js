@@ -21,7 +21,7 @@
   }
   const notes = (id) => id.split(" ").filter((w) => SOLFA.includes(w)).map((w) => SOLFA.indexOf(w));
   C.run({
-    title: "Do-Re-Mi",
+    title: "Symphony Woods",
     goal: "Find the notes on the staff.",
     closure: "All done! You read lots of notes today.",
     stages: { "doremi.tap": "Tap the note Pip sings", "doremi.higher": "Which note is higher?", "doremi.order": "Low to high", "doremi.tune": "Match the tune" },

@@ -48,7 +48,7 @@
     };
   }
   C.run({
-    title: "Bridge Constructor",
+    title: "Master Architect's Studio",
     goal: "Build a bridge that holds the truck.",
     closure: "All done! Your bridges held lots of trucks today.",
     checkLabel: "Test it",

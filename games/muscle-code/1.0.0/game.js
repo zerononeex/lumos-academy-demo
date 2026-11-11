@@ -17,7 +17,7 @@
     C.circle(g, 41, 32, 3, "#ff8fa3"); C.circle(g, 59, 32, 3, "#ff8fa3"); C.shape(g, "M46 33q4 3 8 0", "none");
   }
   C.run({
-    title: "Muscle Code",
+    title: "Cyborg Training Ground",
     goal: "Program the body, step by step.",
     closure: "All done! Pip moved every way you programmed today.",
     checkLabel: "Run",

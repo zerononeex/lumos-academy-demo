@@ -287,7 +287,7 @@
 
   K.run({
     goal: "Lay planks to get across the river.",
-    title: "Bridge Builder", checkLabel: "Go",
+    title: "The Chasm Crossing", checkLabel: "Go",
     closure: "All done! You built great bridges today.",
     stages: {
       bridge_frame: { name: "Bridge on the ten-frame" }, bridge_rack: { name: "Bridge on the bead rack" },

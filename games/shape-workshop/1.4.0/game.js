@@ -802,7 +802,7 @@
 
   K.run({
     goal: "Sort, fit and turn the shapes.",
-    title: "Shape Workshop",
+    title: "Geometry Forge",
     closure: "All done! You worked with lots of shapes today.",
     stages: {
       shape_sort: { name: "Sort it two ways" }, shape_scene: { name: "Fix the picture" }, shape_fill: { name: "Fill the outline" },

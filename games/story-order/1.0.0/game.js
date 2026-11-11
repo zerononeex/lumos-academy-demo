@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards, { svg, h } = window.LumosKit;
   C.run({
-    title: "Story Order",
+    title: "Comic Strip Chronicles",
     goal: "Put the story in order.",
     closure: "All done! You told lots of stories today.",
     stages: { "story.order": "First, next, last", "story.middle": "The missing middle" },

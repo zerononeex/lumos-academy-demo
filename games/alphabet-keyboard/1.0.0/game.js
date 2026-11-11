@@ -8,7 +8,7 @@
   const C = window.LumosCards, { svg, h } = window.LumosKit;
   const key = (x) => ({ name: x, word: " ", draw: (g) => C.text(g, 50, 50, x, 78, "#1b1f3b") });
   C.run({
-    title: "Alphabet Keyboard",
+    title: "Keyboard Chasm",
     goal: "Letters, their names and their sounds.",
     closure: "All done! You found lots of letters today.",
     stages: { "alphabet.start": "First letter", "alphabet.case": "Big and small letters", "alphabet.last": "Last letter" },

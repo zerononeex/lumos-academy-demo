@@ -12,7 +12,7 @@
     return s;
   };
   C.run({
-    title: "Robot Chef",
+    title: "Automated Kitchen 3000",
     goal: "Tell the robot chef what to do, in order.",
     closure: "All done! The robot chef cooked lots of snacks today.",
     checkLabel: "Cook",

@@ -12,7 +12,7 @@
   };
   const piece = (id) => (g) => { const [c, s] = id.split(" "); C.shape(g, SHAPE[s], HEX[c]); };
   C.run({
-    title: "Pattern Pictures",
+    title: "Festival Bunting",
     goal: "Finish the pattern in the picture.",
     closure: "All done! Your pictures are full of patterns.",
     stages: { "patternpic.next": "What comes next?" },

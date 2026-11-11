@@ -170,7 +170,7 @@
   }
 
   K.run({
-    title: "Groups & Arrays Orchard",
+    title: "The Magic Orchard",
     goal: "Plant and count trees in equal rows.",
     closure: "All done! Your orchard is growing in equal rows.",
     stages: { arrays_build: { name: "Plant the rows" }, arrays_count: { name: "How many trees?" }, arrays_two_ways: { name: "Rows and columns" }, arrays_split: { name: "Equal rows" } },

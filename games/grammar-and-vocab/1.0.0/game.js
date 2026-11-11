@@ -7,7 +7,7 @@
   "use strict";
   const C = window.LumosCards, { h } = window.LumosKit;
   C.run({
-    title: "Grammar and Vocab",
+    title: "Storybook Kingdom",
     goal: "Naming words and action words.",
     closure: "All done! You sorted lots of words today.",
     stages: { "grammar.find": "Find the action", "grammar.sort": "Things and actions", "grammar.every": "Every action word", "grammar.sentence": "Finish the sentence" },

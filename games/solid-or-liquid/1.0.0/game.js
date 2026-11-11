@@ -6,7 +6,7 @@
   "use strict";
   const C = window.LumosCards;
   C.run({
-    title: "Solid or Liquid",
+    title: "State of Matter Magic",
     goal: "Does it keep its shape, or take the cup's shape?",
     closure: "All done! You sorted lots of materials today.",
     stages: { "solidliquid.sort": "Solid or liquid?", "solidliquid.which": "Find the liquid" },

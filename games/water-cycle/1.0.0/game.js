@@ -26,7 +26,7 @@
     "water collects in the lake": "lake fills", "tiny drops of water": "water drops", "smoke from a chimney": "chimney smoke",
     "the sun warms it": "the sun", "smoke carries it": "smoke", "a tap pumps it": "a tap" };
   C.run({
-    title: "Water Cycle",
+    title: "Raindrop's Great Journey",
     goal: "Sun, cloud, rain, and round again.",
     closure: "All done! You followed the water round and round.",
     stages: { "watercycle.order": "Round and round", "watercycle.where": "Where does it come from?", "watercycle.next": "What comes next?", "watercycle.name": "Name the part" },
