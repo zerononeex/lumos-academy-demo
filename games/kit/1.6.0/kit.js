@@ -642,7 +642,7 @@
     refresh,
   };
 
-  const slug = location.pathname.split("/")[2];
+  const slug = location.pathname.split("/").at(-3);
   function chrome() {
     document.body.style.backgroundImage = `url(../../scenes/${slug}.webp)`; // the game's world (DESIGN.md, Game scenes)
     document.body.append(
